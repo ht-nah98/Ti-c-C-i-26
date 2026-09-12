@@ -1,21 +1,25 @@
-import { asset, timeline } from "./data";
-
-const DRESS_CODE_COLORS = ["#7C6A60", "#918077", "#C9A97E", "#F6EADD", "#FFF7F3"];
+import { asset, dressCode, timeline } from "./data";
 
 export function DressCodeSection() {
   return (
     <div className="relative z-10 flex flex-col items-center gap-5 px-6 py-10 md:px-10 md:py-12">
-      <h2 className="text-[20px] font-serif font-bold uppercase text-[rgb(124,106,96)]">
-        DRESS CODE
+      <h2 className="font-serif text-[20px] font-bold uppercase text-[rgb(124,106,96)]">
+        {dressCode.title}
       </h2>
-      <p className="text-[16px] font-serif text-[rgb(145,128,119)]">Trang phục dự tiệc</p>
-      <div className="flex gap-3">
-        {DRESS_CODE_COLORS.map((color) => (
-          <span
-            key={color}
-            className="h-9 w-9 rounded-full border border-white/60 shadow-sm"
-            style={{ backgroundColor: color }}
-          />
+      <p className="font-serif text-[16px] text-[rgb(145,128,119)]">
+        {dressCode.subtitle}
+      </p>
+      <div className="flex flex-wrap justify-center gap-4">
+        {dressCode.palette.map((color) => (
+          <div key={color.name} className="flex flex-col items-center gap-1.5">
+            <span
+              className="h-9 w-9 rounded-full border border-[rgba(124,106,96,0.25)] shadow-sm"
+              style={{ backgroundColor: color.hex }}
+            />
+            <span className="font-serif text-[11px] font-light text-[rgb(145,128,119)]">
+              {color.name}
+            </span>
+          </div>
         ))}
       </div>
     </div>
@@ -68,9 +72,14 @@ export function TimelineSection() {
                   <span className="text-[17px] font-serif font-light text-[rgb(124,106,96)]">
                     {item.time}
                   </span>
-                  <span className="text-[15px] font-serif font-light text-[rgb(145,128,119)]">
+                  <span className="font-serif text-[15px] font-light text-[rgb(145,128,119)]">
                     {item.title}
                   </span>
+                  {item.place ? (
+                    <span className="font-serif text-[12px] font-light italic text-[rgba(145,128,119,0.85)]">
+                      {item.place}
+                    </span>
+                  ) : null}
                 </div>
               );
             })}

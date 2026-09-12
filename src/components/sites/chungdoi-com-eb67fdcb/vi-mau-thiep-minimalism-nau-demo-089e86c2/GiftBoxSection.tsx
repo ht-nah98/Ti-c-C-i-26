@@ -17,16 +17,23 @@ const STARS: StarSpec[] = [
   { size: 14, className: "-bottom-1 -right-2", delay: "0.9s" },
 ];
 
+/** Chia số tài khoản thành nhóm 4 chữ số cho dễ đọc và dễ đối chiếu */
+function groupDigits(value: string) {
+  return value.replace(/(\d{4})(?=\d)/g, "$1 ");
+}
+
 function BankAccountCard({
   role,
   bank,
   number,
   holder,
+  hasQr,
 }: {
   role: string;
   bank: string;
   number: string;
   holder: string;
+  hasQr: boolean;
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -41,21 +48,36 @@ function BankAccountCard({
   }
 
   return (
-    <div className="mb-4 rounded-[10px] border border-[rgba(124,106,96,0.2)] p-4">
-      <p className="text-[12px] font-semibold text-[rgb(124,106,96)]">{role}</p>
-      <p className="text-[10px] text-[rgb(124,106,96)]">{bank}</p>
-      <p className="font-mono text-[10px] text-[rgb(124,106,96)]">{number}</p>
-      <p className="text-[10px] text-[rgb(124,106,96)]">{holder}</p>
+    <div className="mb-4 rounded-[10px] border border-[rgba(124,106,96,0.2)] bg-[rgba(255,255,255,0.5)] p-4 text-center">
+      <p className="font-serif text-[13px] font-semibold text-[rgb(124,106,96)]">
+        {role}
+      </p>
+      <p className="mt-1 font-serif text-[11px] font-light text-[rgb(145,128,119)]">
+        {bank}
+      </p>
+      <p className="mt-2 font-mono text-[15px] tracking-[0.5px] text-[rgb(124,106,96)]">
+        {groupDigits(number)}
+      </p>
+      <p className="mt-1 font-serif text-[11px] font-light uppercase tracking-[0.6px] text-[rgb(145,128,119)]">
+        {holder}
+      </p>
       <button
         type="button"
         onClick={handleCopy}
-        className="mt-2 rounded-full border border-[rgba(124,106,96,0.3)] px-3 py-1 text-[10px] text-[rgb(124,106,96)] transition-transform hover:scale-[1.03]"
+        className="mt-3 rounded-full border border-[rgba(124,106,96,0.3)] px-4 py-1.5 font-serif text-[11px] text-[rgb(124,106,96)] transition-transform hover:scale-[1.03]"
       >
-        {copied ? "Đã sao chép" : "Sao chép"}
+        {copied ? "Đã sao chép ✓" : "Sao chép số tài khoản"}
       </button>
-      <div className="mt-3 flex h-28 w-28 items-center justify-center rounded border border-dashed border-[rgba(124,106,96,0.3)] text-[10px] text-[rgb(124,106,96)]">
-        QR
-      </div>
+      {hasQr ? (
+        <div className="mt-3 flex flex-col items-center gap-1.5">
+          <div className="flex h-28 w-28 items-center justify-center rounded border border-dashed border-[rgba(124,106,96,0.3)] font-serif text-[10px] text-[rgb(145,128,119)]">
+            Mã QR
+          </div>
+          <span className="font-serif text-[10px] font-light text-[rgba(145,128,119,0.8)]">
+            Quét để chuyển khoản
+          </span>
+        </div>
+      ) : null}
     </div>
   );
 }

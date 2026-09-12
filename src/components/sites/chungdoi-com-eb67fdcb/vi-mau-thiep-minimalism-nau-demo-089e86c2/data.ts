@@ -1,6 +1,9 @@
 /**
- * Nội dung thiệp — trích xuất verbatim từ
- * https://chungdoi.com/vi/mau-thiep/minimalism-nau/demo
+ * Nội dung thiệp cưới — Hà Tiến Anh & Bùi Phương Linh
+ * Ngày cưới: Chủ Nhật 20/09/2026 (10 tháng 08 năm Bính Ngọ)
+ *
+ * Nguồn: /home/user/Desktop/Thiep-Cuoi/THONG-TIN-LE-CUOI.md
+ * Giao diện kế thừa từ mẫu minimalism nâu.
  */
 
 const BASE = "/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2";
@@ -18,10 +21,25 @@ export interface Parent {
   address: string;
 }
 
+export interface Ceremony {
+  name: string;
+  time: string;
+  host: string;
+  address: string;
+  mapUrl?: string;
+}
+
 export interface TimelineItem {
   time: string;
   title: string;
+  place?: string;
   icon?: string;
+}
+
+export interface StoryMilestone {
+  date: string;
+  title: string;
+  description: string;
 }
 
 export interface Wish {
@@ -35,65 +53,141 @@ export interface BankAccount {
   bank: string;
   number: string;
   holder: string;
+  hasQr: boolean;
 }
 
 export const couple = {
-  groom: { short: "Hoàng Nam", full: "Nguyễn Hoàng Nam", rank: "Trưởng Nam" },
-  bride: { short: "Thảo Vy", full: "Trần Thảo Vy", rank: "Út Nữ" },
+  groom: { short: "Tiến Anh", full: "Hà Tiến Anh", rank: "Chú Rể" },
+  bride: { short: "Phương Linh", full: "Bùi Phương Linh", rank: "Cô Dâu" },
 } as const;
 
+/** Ngày cưới — dùng cho hero, lịch, đếm ngược */
 export const weddingDate = {
-  time: "09:00",
-  weekday: "THỨ BẢY",
-  day: "03",
-  month: "THÁNG 01",
+  time: "11:00",
+  weekday: "CHỦ NHẬT",
+  day: "20",
+  month: "THÁNG 09",
   year: "2026",
-  lunar: "(TỨC NGÀY 15 THÁNG 11 NĂM ẤT TỴ)",
-  pretty: "3 tháng 1, 2026",
-} as const;
-
-export const partyDate = {
-  time: "18:00",
-  weekday: "THỨ BẢY",
-  day: "03",
-  month: "THÁNG 01",
-  year: "2026",
-  lunar: "(Tức ngày 15 tháng 11 năm Ất Tỵ)",
-  welcome: "17:30",
-  start: "18:00",
+  lunar: "(TỨC NGÀY 10 THÁNG 08 NĂM BÍNH NGỌ)",
+  pretty: "20 tháng 9, 2026",
+  /** ISO cho đếm ngược: 20/09/2026 11:00 giờ Việt Nam (UTC+7) */
+  iso: "2026-09-20T11:00:00+07:00",
+  /** Lịch hiển thị tháng 9/2026 */
+  calendarMonthLabel: "Tháng 9 / 2026",
+  calendarYear: 2026,
+  calendarMonth: 9,
+  highlightDay: 20,
 } as const;
 
 export const parents: Parent[] = [
   {
-    label: "Ông Bà",
-    father: "Trần Quốc Hưng",
-    mother: "Nguyễn Thị Hồng",
-    address: "Quận 1, TP. Hồ Chí Minh",
+    label: "Nhà Trai",
+    father: "Ông Hà Thanh Nghị",
+    mother: "Bà Nguyễn Thị Thanh Vân",
+    address: "Thanh Miếu, Việt Trì, Phú Thọ",
   },
   {
-    label: "Ông Bà",
-    father: "Lê Văn Thành",
-    mother: "Phạm Thị Lan",
-    address: "Quận 3, TP. Hồ Chí Minh",
+    label: "Nhà Gái",
+    father: "Ông Bùi Ngọc Uyên",
+    mother: "Bà Đoàn Thị Quỳnh Hoa",
+    address: "Minh Khai, Hai Bà Trưng, Hà Nội",
   },
 ];
 
+/** Hai nghi lễ trong ngày */
+export const ceremonies: Ceremony[] = [
+  {
+    name: "LỄ VU QUY",
+    time: "07:05",
+    host: "Tại nhà gái",
+    address:
+      "Phòng 1905, Tầng 19, CT2, Chung cư Skylight, Ngõ Hòa Bình 6, Phố Minh Khai, Hà Nội",
+  },
+  {
+    name: "LỄ THÀNH HÔN",
+    time: "11:00",
+    host: "Tại tư gia nhà trai",
+    address:
+      "Số nhà 04, ngõ 175 Đường Minh Lang, Mai Sơn, Thanh Miếu, Việt Trì, Phú Thọ",
+    mapUrl: "https://maps.app.goo.gl/C3Hui5hKWNtMT5HE6",
+  },
+];
+
+/** Địa điểm chính hiển thị ở phần bản đồ — lễ thành hôn nhà trai */
 export const venue = {
-  heading: "Tiệc cưới sẽ tổ chức tại",
-  name: "Trung Tâm Hội Nghị White Palace",
+  heading: "Lễ Thành Hôn được cử hành tại",
+  name: "Tư gia nhà trai",
   address:
-    "Trung Tâm Hội Nghị White Palace, 194 Hoàng Văn Thụ, Phường 9, Quận Phú Nhuận, TP. Hồ Chí Minh",
+    "Số nhà 04, ngõ 175 Đường Minh Lang, Mai Sơn, Thanh Miếu, Việt Trì, Phú Thọ",
   mapQuery:
-    "Trung Tâm Hội Nghị White Palace, 194 Hoàng Văn Thụ, Phường 9, Quận Phú Nhuận, TP. Hồ Chí Minh",
+    "Số nhà 04, ngõ 175 Đường Minh Lang, Mai Sơn, Thanh Miếu, Việt Trì, Phú Thọ",
+  mapUrl: "https://maps.app.goo.gl/C3Hui5hKWNtMT5HE6",
 } as const;
 
 export const timeline: TimelineItem[] = [
-  { time: "17:00", title: "Đón khách" },
-  { time: "18:00", title: "Khai tiệc", icon: "gate.webp" },
-  { time: "18:30", title: "Nghi thức cưới", icon: "cake.webp" },
-  { time: "19:00", title: "Cắt bánh & nâng ly", icon: "water.webp" },
-  { time: "20:30", title: "Kết thúc tiệc" },
+  { time: "05:00", title: "Nhà trai khởi hành đón dâu", place: "Từ Việt Trì" },
+  { time: "07:05", title: "Lễ Vu Quy", place: "Tại nhà gái", icon: "gate.webp" },
+  { time: "09:00", title: "Rước dâu về Việt Trì", icon: "water.webp" },
+  {
+    time: "11:00",
+    title: "Lễ Thành Hôn",
+    place: "Tại tư gia nhà trai",
+    icon: "cake.webp",
+  },
 ];
+
+/** Tông màu trang phục gợi ý */
+export const dressCode = {
+  title: "TRANG PHỤC",
+  subtitle: "Tông màu gợi ý",
+  palette: [
+    { name: "Đỏ", hex: "#9B2C2C" },
+    { name: "Be", hex: "#E8D5BC" },
+    { name: "Nâu", hex: "#7C6A60" },
+    { name: "Đen", hex: "#2B2B2B" },
+    { name: "Trắng", hex: "#FFFFFF" },
+  ],
+} as const;
+
+/** Câu chuyện của chúng tôi — 4 cột mốc */
+export const story: StoryMilestone[] = [
+  {
+    date: "Tháng 11 / 2024",
+    title: "Lần đầu biết về nhau",
+    description:
+      "Qua dự án AI 101 — Tiến Anh là speaker, Phương Linh vừa là học viên vừa là giám khảo.",
+  },
+  {
+    date: "01 / 01 / 2025",
+    title: "Tin nhắn đầu tiên",
+    description:
+      "Lời chúc năm mới qua Messenger — tin nhắn đầu tiên không vì công việc.",
+  },
+  {
+    date: "08 / 02 / 2025",
+    title: "Chính thức thuộc về nhau",
+    description:
+      "Buổi hẹn kéo dài từ sáng đến tối, một lời tỏ tình và một cái gật đầu.",
+  },
+  {
+    date: "30 / 04 / 2026",
+    title: "Lời cầu hôn",
+    description:
+      "Tại Tây Hồ, Hàng Châu — trong chuyến du lịch nước ngoài đầu tiên của hai đứa.",
+  },
+];
+
+/** Hai câu trích dẫn mở đầu phần nội dung */
+export const loveQuotes = [
+  "Có một nơi để về, đó là nhà. Có những người để yêu thương, đó là gia đình. Có được cả hai, đó là hạnh phúc.",
+  "Yêu không phải là nhìn nhau, mà là cùng nhau nhìn về một hướng.",
+] as const;
+
+/** Lời kết cuối thiệp */
+export const closingWords = [
+  "Một lời chúc, một cái ôm, hay chỉ là có mặt trong ngày hôm đó — với chúng tôi đều là món quà không gì thay được.",
+  "Cảm ơn vì đã ở đây, trong ngày quan trọng nhất của chúng tôi.",
+] as const;
 
 export const albumPhotos = [
   "d30fe2fc-7c30-4c1c-8515-83142e714040.jpg",
@@ -106,81 +200,42 @@ export const albumPhotos = [
 
 export const heroPhoto = "88aa2b21-f2e3-4f9a-8725-f59c2ef48c9a.jpg";
 
+/** Ba lời chúc ghim sẵn trên thiệp */
 export const wishes: Wish[] = [
   {
-    name: "Mỹ Linh",
-    timestamp: "21:20:27 14/7/2026",
+    name: "Người em",
+    timestamp: "",
     message:
-      "Chúc hai bạn trăm năm hạnh phúc, vạn sự như ý, một đám cưới thật vui!",
+      "Hôm nay là ngày vui của anh chị và cũng là ngày em rất hạnh phúc. Chúc anh chị mãi yêu thương nhau như bây giờ và đạt được mọi ước nguyện trong cuộc sống.",
   },
   {
-    name: "Trọng Nhân",
-    timestamp: "21:20:27 14/7/2026",
+    name: "Người em",
+    timestamp: "",
     message:
-      "Chúc mừng hai bạn về chung một nhà! Chúc luôn vui vẻ và yêu thương nhau thật nhiều.",
+      "Happy Wedding anh chị! Chúc anh chị của em sẽ có một cuộc sống hôn nhân viên mãn, hạnh phúc. Giờ là lúc anh chị được tận hưởng những điều ngọt ngào và tốt đẹp nhất bởi anh chị xứng đáng!",
   },
   {
-    name: "Phương Vy",
-    timestamp: "21:20:27 14/7/2026",
+    name: "Người bạn",
+    timestamp: "",
     message:
-      "Chúc Nam và Vy mãi ngọt ngào như ngày đầu, hạnh phúc trọn đời bên nhau!",
-  },
-  {
-    name: "Hải Đăng",
-    timestamp: "21:20:27 14/7/2026",
-    message:
-      "Chúc mừng anh chị! Chúc hai người xây dựng tổ ấm thật hạnh phúc và bền lâu.",
-  },
-  {
-    name: "Ngọc Diệp",
-    timestamp: "21:20:27 14/7/2026",
-    message:
-      "Nhìn thiệp mà thấy ấm áp ghê. Chúc hai bạn một hôn lễ thật trọn vẹn và đáng nhớ!",
-  },
-  {
-    name: "Đức Thịnh",
-    timestamp: "21:20:27 14/7/2026",
-    message:
-      "Chúc cô dâu chú rể trăm năm hạnh phúc, gia đình êm ấm, con cái đủ đầy!",
-  },
-  {
-    name: "Lan Anh",
-    timestamp: "21:20:27 14/7/2026",
-    message:
-      "Chúc mừng hạnh phúc hai bạn nhé! Mong hai bạn luôn nắm tay nhau đi hết cuộc đời.",
-  },
-  {
-    name: "Quốc Bảo",
-    timestamp: "21:20:27 14/7/2026",
-    message:
-      "Mừng đám cưới của cậu mợ! Chúc hai bạn mãi yêu thương và thấu hiểu nhau.",
-  },
-  {
-    name: "Thu Hà",
-    timestamp: "21:20:27 14/7/2026",
-    message:
-      "Ôi tấm thiệp đẹp quá! Chúc hai đứa hạnh phúc viên mãn, sớm có tin vui.",
-  },
-  {
-    name: "Minh Tuấn",
-    timestamp: "21:20:27 14/7/2026",
-    message:
-      "Chúc mừng Hoàng Nam và Thảo Vy! Chúc hai bạn trăm năm hạnh phúc, đầu bạc răng long nhé!",
+      "Mong rằng tình yêu của hai bạn sẽ luôn tươi mới như hoa, ngọt ngào như mật, bền chặt như dây và sâu đậm tựa biển để cùng nhau đi hết cuộc đời.",
   },
 ];
 
 export const bankAccounts: BankAccount[] = [
   {
-    role: "Chú Rể - TRAN TUAN KIET",
-    bank: "Vietcombank",
-    number: "1023456789",
-    holder: "TRAN TUAN KIET",
+    role: "Chú Rể — Hà Tiến Anh",
+    bank: "Techcombank",
+    number: "1410989989",
+    holder: "HA TIEN ANH",
+    hasQr: true,
   },
   {
-    role: "Cô Dâu - LE MINH ANH",
+    role: "Cô Dâu — Bùi Phương Linh",
     bank: "Techcombank",
-    number: "1987654321",
-    holder: "LE MINH ANH",
+    number: "19033598273010",
+    holder: "BUI PHUONG LINH",
+    hasQr: false,
   },
 ];
 

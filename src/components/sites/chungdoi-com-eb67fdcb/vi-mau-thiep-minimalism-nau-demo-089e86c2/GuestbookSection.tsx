@@ -95,9 +95,11 @@ export function GuestbookSection() {
               <span className="font-serif text-[14px] font-semibold text-[rgb(124,106,96)]">
                 {wish.name}
               </span>
-              <span className="font-serif text-[12px] font-light text-[rgb(145,128,119)]">
-                {wish.timestamp}
-              </span>
+              {wish.timestamp ? (
+                <span className="font-serif text-[12px] font-light text-[rgb(145,128,119)]">
+                  {wish.timestamp}
+                </span>
+              ) : null}
             </div>
             <p className="mt-2 font-serif text-[14px] font-light leading-relaxed text-[rgb(124,106,96)]">
               {wish.message}

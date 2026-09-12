@@ -39,9 +39,9 @@ const theNautigal = The_Nautigal({
 });
 
 export const metadata: Metadata = {
-  title: "Mẫu Thiệp Minimalism Nâu - Thiệp Cưới Tối Giản Ấm Áp",
+  title: "Hà Tiến Anh ❤ Bùi Phương Linh — 20.09.2026",
   description:
-    "Thiệp cưới online phong cách minimalism nâu — ấm áp, tối giản, trang nhã.",
+    "Trân trọng kính mời quý vị đến dự Lễ Thành Hôn của chúng tôi — Chủ Nhật, 20 tháng 09 năm 2026.",
 };
 
 export default function RootLayout({

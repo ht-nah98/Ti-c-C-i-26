@@ -22,11 +22,12 @@ export function VenueSection() {
           className="mt-3 h-[268px] w-full max-w-[338px] overflow-hidden rounded-[15px] md:h-[380px] md:max-w-[460px]"
         />
 
+        {/* Dùng link Google Maps do gia đình cung cấp — chính xác hơn tìm kiếm theo chuỗi địa chỉ */}
         <a
-          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue.mapQuery)}`}
+          href={venue.mapUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-[rgba(124,106,96,0.3)] px-5 py-2 text-sm font-semibold text-[rgb(145,128,119)] md:text-base"
+          className="inline-flex items-center gap-2 rounded-full border border-[rgba(124,106,96,0.3)] px-5 py-2 font-serif text-sm font-semibold text-[rgb(145,128,119)] md:text-base"
         >
           <MapPinIcon className="h-4 w-4" />
           Chỉ đường
