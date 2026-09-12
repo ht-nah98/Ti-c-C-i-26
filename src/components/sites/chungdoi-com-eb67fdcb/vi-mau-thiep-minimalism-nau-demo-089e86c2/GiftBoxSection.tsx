@@ -5,17 +5,40 @@ import { createPortal } from "react-dom";
 import { asset, bankAccounts } from "./data";
 import { CloseIcon } from "./icons";
 
-interface StarSpec {
+interface MiniGift {
+  file: string;
   size: number;
-  className: string;
-  delay: string;
+  /** Vị trí quanh hộp lớn, tính theo % của khung chứa */
+  top: string;
+  left: string;
+  rotate: number;
+  /** Thời lượng và độ trễ của hiệu ứng nhấp nhô */
+  duration: number;
+  delay: number;
 }
 
-const STARS: StarSpec[] = [
-  { size: 22, className: "-top-2 -left-2", delay: "0s" },
-  { size: 16, className: "-top-1 -right-3", delay: "0.3s" },
-  { size: 14, className: "-bottom-2 -left-3", delay: "0.6s" },
-  { size: 14, className: "-bottom-1 -right-2", delay: "0.9s" },
+/**
+ * 8 hộp quà nhỏ bay quanh hộp lớn — dùng lại bộ icon giftbox
+ * của theme, mỗi cái nhấp nhô với nhịp riêng (keyframes `float`
+ * và `mbFloat` đã có sẵn trong globals.css).
+ */
+const MINI_GIFTS: MiniGift[] = [
+  { file: "boho_floral_pink.webp", size: 40, top: "8%", left: "4%", rotate: -14, duration: 4.2, delay: 0 },
+  { file: "minimalism_red.webp", size: 34, top: "4%", left: "80%", rotate: 12, duration: 5.1, delay: 0.6 },
+  { file: "royal_v2_purple.webp", size: 30, top: "32%", left: "-4%", rotate: -8, duration: 4.7, delay: 1.2 },
+  { file: "crystal_floral_green.webp", size: 36, top: "56%", left: "0%", rotate: 16, duration: 5.4, delay: 0.3 },
+  { file: "porcelain_blue.webp", size: 32, top: "52%", left: "84%", rotate: -11, duration: 4.5, delay: 0.9 },
+  { file: "jasmine_white.webp", size: 28, top: "26%", left: "88%", rotate: 9, duration: 5.8, delay: 1.5 },
+  { file: "double_dragon_blue.webp", size: 26, top: "72%", left: "76%", rotate: -18, duration: 4.9, delay: 0.4 },
+  { file: "minimalism_red.webp", size: 24, top: "76%", left: "8%", rotate: 14, duration: 5.6, delay: 1.1 },
+];
+
+/** Chấm lấp lánh xen giữa các hộp quà */
+const SPARKLES = [
+  { size: 14, top: "14%", left: "26%", delay: "0s" },
+  { size: 10, top: "8%", left: "64%", delay: "0.5s" },
+  { size: 12, top: "64%", left: "26%", delay: "1s" },
+  { size: 9, top: "44%", left: "94%", delay: "1.4s" },
 ];
 
 /** Chia số tài khoản thành nhóm 4 chữ số cho dễ đọc và dễ đối chiếu */
@@ -111,27 +134,59 @@ export function GiftBoxSection() {
       </h2>
 
       {!open && (
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="relative mx-auto flex w-[200px] flex-col items-center gap-3 transition-transform hover:scale-105"
-        >
-          {STARS.map((star, i) => (
+        <div className="relative mx-auto h-[300px] w-[320px] md:h-[340px] md:w-[380px]">
+          {/* Hộp quà nhỏ bay quanh */}
+          {MINI_GIFTS.map((gift, i) => (
+            <img
+              key={`${gift.file}-${i}`}
+              src={asset.misc(gift.file)}
+              alt=""
+              aria-hidden
+              className="pointer-events-none absolute object-contain drop-shadow-[2px_3px_3px_rgba(0,0,0,0.15)]"
+              style={{
+                width: `${gift.size}px`,
+                height: `${gift.size}px`,
+                top: gift.top,
+                left: gift.left,
+                transform: `rotate(${gift.rotate}deg)`,
+                animation: `float ${gift.duration}s ease-in-out ${gift.delay}s infinite`,
+              }}
+            />
+          ))}
+
+          {/* Chấm lấp lánh */}
+          {SPARKLES.map((s, i) => (
             <span
-              key={i}
-              className={`absolute animate-pulse text-[rgb(145,128,119)] ${star.className}`}
-              style={{ fontSize: `${star.size}px`, animationDelay: star.delay }}
+              key={`sparkle-${i}`}
+              aria-hidden
+              className="pointer-events-none absolute animate-pulse text-[rgb(145,128,119)]"
+              style={{
+                fontSize: `${s.size}px`,
+                top: s.top,
+                left: s.left,
+                animationDelay: s.delay,
+              }}
             >
               ✦
             </span>
           ))}
-          <img
-            src={asset.misc("minimalism_brown.webp")}
-            className="h-28 w-28 object-contain"
-            alt="Hộp quà mừng"
-          />
-          <p className="text-[12px] text-[rgb(124,106,96)]">Nhấn để mở</p>
-        </button>
+
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-3 transition-transform hover:scale-105"
+          >
+            <img
+              src={asset.misc("minimalism_brown.webp")}
+              className="h-28 w-28 object-contain drop-shadow-[4px_5px_6px_rgba(0,0,0,0.18)] md:h-32 md:w-32"
+              alt="Hộp quà mừng"
+              style={{ animation: "mbFloat 3.6s ease-in-out infinite" }}
+            />
+            <p className="font-serif text-[12px] text-[rgb(124,106,96)]">
+              Nhấn để mở
+            </p>
+          </button>
+        </div>
       )}
 
       {open 

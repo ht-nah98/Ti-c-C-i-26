@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { CoverOverlay } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/CoverOverlay";
 import { AmbientPetals } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/AmbientPetals";
+import { MusicPlayer } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/MusicPlayer";
 import { HeroSection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/HeroSection";
 import { WeddingInfoSection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/WeddingInfoSection";
 import { LoveQuotesSection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/LoveQuotesSection";
@@ -27,6 +28,9 @@ export default function Page() {
   return (
     <main className="min-h-screen w-full">
       <CoverOverlay onOpen={() => setOpened(true)} hidden={opened} />
+
+      {/* Nhạc nền bắt đầu khi khách mở thiệp */}
+      <MusicPlayer autoStart={opened} />
 
       <div className="flex w-full justify-center overflow-x-clip bg-white">
         <div className="relative isolate w-full max-w-[480px] overflow-hidden bg-[#fff7f3] md:mx-auto md:max-w-[900px] md:border md:border-[#7c6a6022]">

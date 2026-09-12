@@ -219,3 +219,13 @@
     transform: translateY(-10px);
   }
 }
+
+/* Đĩa nhạc quay khi đang phát nhạc nền */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
