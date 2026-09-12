@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { asset } from "./data";
+import { useMusicControl } from "./MusicContext";
 
 const VIDEO_SRC =
   "/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/video/cau-chuyen.mp4";
@@ -13,6 +14,9 @@ const VIDEO_SRC =
 export function StoryVideoSection() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [started, setStarted] = useState(false);
+  const { requestDuck } = useMusicControl();
+  /** Hàm huỷ yêu cầu tắt nhạc, giữ lại để gọi khi video dừng */
+  const releaseDuck = useRef<(() => void) | null>(null);
 
   function handlePlay() {
     const video = videoRef.current;
@@ -20,6 +24,21 @@ export function StoryVideoSection() {
     setStarted(true);
     void video.play();
   }
+
+  /** Video bắt đầu chạy -> tắt nhạc nền */
+  function onVideoPlay() {
+    if (!releaseDuck.current) {
+      releaseDuck.current = requestDuck();
+    }
+  }
+
+  /** Video dừng/hết -> trả lại nhạc nền */
+  function onVideoStop() {
+    releaseDuck.current?.();
+    releaseDuck.current = null;
+  }
+
+  useEffect(() => () => onVideoStop(), []);
 
   return (
     <div className="relative z-10 overflow-x-clip px-6 py-8">
@@ -38,6 +57,9 @@ export function StoryVideoSection() {
             controls={started}
             playsInline
             preload="none"
+            onPlay={onVideoPlay}
+            onPause={onVideoStop}
+            onEnded={onVideoStop}
             className="block aspect-video w-full bg-black object-cover"
           />
 

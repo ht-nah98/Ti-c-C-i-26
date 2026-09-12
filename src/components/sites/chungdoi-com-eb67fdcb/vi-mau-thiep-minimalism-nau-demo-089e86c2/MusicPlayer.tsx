@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MusicNoteIcon } from "./icons";
+import { useMusicControl } from "./MusicContext";
 
 const TRACK = "/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/audio/ngay-dau-tien.mp3";
 
@@ -21,6 +22,29 @@ export function MusicPlayer({ autoStart }: MusicPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [blocked, setBlocked] = useState(false);
+  const { ducked } = useMusicControl();
+  /** Nhạc có đang phát trước khi bị video tắt hay không */
+  const resumeAfterDuck = useRef(false);
+
+  // Video phát -> tạm dừng nhạc; video dừng -> bật lại nếu trước đó đang phát
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (ducked) {
+      if (!audio.paused) {
+        resumeAfterDuck.current = true;
+        audio.pause(); // sự kiện onPause cập nhật state
+      }
+      return;
+    }
+
+    if (resumeAfterDuck.current) {
+      resumeAfterDuck.current = false;
+      audio.volume = 0.45;
+      void audio.play().catch(() => undefined);
+    }
+  }, [ducked]);
 
   useEffect(() => {
     if (!autoStart) return;
@@ -59,7 +83,14 @@ export function MusicPlayer({ autoStart }: MusicPlayerProps) {
 
   return (
     <>
-      <audio ref={audioRef} src={TRACK} loop preload="none" />
+      <audio
+        ref={audioRef}
+        src={TRACK}
+        loop
+        preload="none"
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+      />
 
       <button
         type="button"
