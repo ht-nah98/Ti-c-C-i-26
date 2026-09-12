@@ -1,20 +1,47 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  EB_Garamond,
+  Lora,
+  Ms_Madi,
+  The_Nautigal,
+} from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin", "vietnamese"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const ebGaramond = EB_Garamond({
+  variable: "--font-eb-garamond",
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "500", "600"],
+});
+
+const lora = Lora({
+  variable: "--font-lora",
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "500", "600"],
+});
+
+const msMadi = Ms_Madi({
+  variable: "--font-ms-madi",
   subsets: ["latin"],
+  weight: "400",
+});
+
+const theNautigal = The_Nautigal({
+  variable: "--font-nautigal",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Website Clone",
-  description: "Pixel-perfect website clone",
+  title: "Mẫu Thiệp Minimalism Nâu - Thiệp Cưới Tối Giản Ấm Áp",
+  description:
+    "Thiệp cưới online phong cách minimalism nâu — ấm áp, tối giản, trang nhã.",
 };
 
 export default function RootLayout({
@@ -24,8 +51,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang="vi"
+      className={`${cormorant.variable} ${ebGaramond.variable} ${lora.variable} ${msMadi.variable} ${theNautigal.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

@@ -128,3 +128,94 @@
     @apply font-sans;
   }
 }
+/* ============================================================
+   chungdoi.com — minimalism nâu (demo)
+   Design tokens + animations trích xuất từ site gốc
+   ============================================================ */
+
+@theme inline {
+  --font-cormorant: var(--font-cormorant), "Times New Roman", serif;
+  --font-eb-garamond: var(--font-eb-garamond), "Times New Roman", serif;
+  --font-lora: var(--font-lora), "Times New Roman", serif;
+  --font-ms-madi: var(--font-ms-madi), cursive;
+  --font-nautigal: var(--font-nautigal), cursive;
+}
+
+:root {
+  /* Bảng màu theme */
+  --cd-brown: rgb(124, 106, 96);
+  --cd-brown-light: rgb(145, 128, 119);
+  --cd-brown-soft: rgb(130, 119, 113);
+  --cd-muted: rgb(222, 217, 215);
+  --cd-cream: rgb(255, 247, 243);
+  --cd-beige: rgb(246, 234, 221);
+  --cd-border: rgba(124, 106, 96, 0.13);
+
+  /* Màu cánh hoa bay */
+  --cd-petal-1: #c9a97e;
+  --cd-petal-2: #918077;
+  --cd-petal-3: #b89b78;
+}
+
+/* Animation cánh hoa — verbatim từ site gốc */
+@keyframes ambient-fall {
+  0% {
+    transform: translateY(-8vh) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(48vh) translateX(var(--sway, 20px)) rotate(180deg);
+    opacity: 0.6;
+  }
+  92% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateY(105vh) translateX(0px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ambient-rise {
+  0% {
+    transform: translateY(6vh) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.45;
+  }
+  55% {
+    transform: translateY(-42vh) translateX(var(--sway, 20px)) rotate(8deg);
+    opacity: 0.55;
+  }
+  92% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-92vh) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes mbFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
