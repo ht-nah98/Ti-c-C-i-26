@@ -9,6 +9,7 @@ import { HeroSection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thi
 import { WeddingInfoSection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/WeddingInfoSection";
 import { LoveQuotesSection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/LoveQuotesSection";
 import { StorySection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/StorySection";
+import { StoryVideoSection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/StoryVideoSection";
 import { PhotoAlbumSection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/PhotoAlbumSection";
 import { PartyInfoSection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/PartyInfoSection";
 import { VenueSection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/VenueSection";
@@ -57,6 +58,9 @@ export default function Page() {
 
           {/* 4. Câu chuyện của chúng tôi */}
           <StorySection />
+
+          {/* 4b. Video câu chuyện */}
+          <StoryVideoSection />
 
           {/* 5. Album ảnh */}
           <PhotoAlbumSection />
