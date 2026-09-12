@@ -14,6 +14,7 @@ import {
 import { GuestbookSection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/GuestbookSection";
 import { GiftBoxSection } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/GiftBoxSection";
 import { SiteFooter } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/SiteFooter";
+import { AmbientPetals } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/AmbientPetals";
 import { asset } from "@/components/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/data";
 
 export default function Page() {
@@ -34,6 +35,8 @@ export default function Page() {
               backgroundSize: "cover",
             }}
           />
+
+          <AmbientPetals />
 
           <HeroSection />
           <WeddingInfoSection />

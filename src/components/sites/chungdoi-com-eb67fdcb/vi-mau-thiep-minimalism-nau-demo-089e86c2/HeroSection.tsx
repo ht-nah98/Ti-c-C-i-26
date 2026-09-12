@@ -62,6 +62,12 @@ export function HeroSection() {
           alt=""
           className="absolute inset-0 z-20 h-full w-full object-contain"
         />
+        {/* Cành hoa khô phủ lên góc dưới-trái của ảnh cưới, nằm trên khung */}
+        <img
+          src={asset.theme("flower2-decoration.webp")}
+          alt=""
+          className="pointer-events-none absolute bottom-[2%] left-[-4%] z-30 w-[42%] max-w-none -rotate-[10deg] object-contain drop-shadow-[3px_4px_4px_rgba(0,0,0,0.18)]"
+        />
       </div>
     </header>
   );
