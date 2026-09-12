@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd /home/user/Desktop/website-clone && rm -rf .tmp-clone/.git && shopt -s dotglob && mv .tmp-clone/* . && shopt -u dotglob && rmdir .tmp-clone && echo \\\"=== Moved. Contents: ===\\\" && rtk l...",
+  "error": "Exit code 127\n(eval):1: command not found: shopt",
+  "timestamp": "2026-09-12T10:09:06.682Z",
+  "retry_count": 1
+}
