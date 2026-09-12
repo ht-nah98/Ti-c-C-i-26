@@ -28,8 +28,7 @@ export function WeddingInfoSection() {
 
         <div className="relative z-10 flex flex-col items-center gap-6">
           <h2
-            className="relative z-10 text-center text-[20px] uppercase tracking-[0.48px] text-[rgb(124,106,96)]"
-            style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 700 }}
+            className="relative z-10 text-center text-[20px] uppercase tracking-[0.48px] text-[rgb(124,106,96)] font-serif font-bold"
           >
             THÔNG TIN LỄ CƯỚI
           </h2>
@@ -40,8 +39,7 @@ export function WeddingInfoSection() {
               return (
                 <div key={parent.address} className={`${column} row-start-1`}>
                   <p
-                    className="text-[12px] text-[rgb(145,128,119)]"
-                    style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 300 }}
+                    className="text-[12px] text-[rgb(145,128,119)] font-serif font-light"
                   >
                     {parent.label}
                   </p>
@@ -53,8 +51,7 @@ export function WeddingInfoSection() {
               return (
                 <p
                   key={parent.father}
-                  className={`${column} row-start-2 text-[12px] text-[rgb(124,106,96)]`}
-                  style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 600 }}
+                  className={`${column} row-start-2 text-[12px] text-[rgb(124,106,96)] font-serif font-semibold`}
                 >
                   {parent.father}
                 </p>
@@ -65,8 +62,7 @@ export function WeddingInfoSection() {
               return (
                 <p
                   key={parent.mother}
-                  className={`${column} row-start-3 text-[12px] text-[rgb(124,106,96)]`}
-                  style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 600 }}
+                  className={`${column} row-start-3 text-[12px] text-[rgb(124,106,96)] font-serif font-semibold`}
                 >
                   {parent.mother}
                 </p>
@@ -77,8 +73,7 @@ export function WeddingInfoSection() {
               return (
                 <p
                   key={parent.address}
-                  className={`${column} row-start-4 text-[10px] text-[rgb(145,128,119)]`}
-                  style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 300 }}
+                  className={`${column} row-start-4 text-[10px] text-[rgb(145,128,119)] font-serif font-light`}
                 >
                   {parent.address}
                 </p>
@@ -88,8 +83,7 @@ export function WeddingInfoSection() {
           </div>
 
           <p
-            className="whitespace-pre-line text-[13px] text-[rgb(124,106,96)]"
-            style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 300 }}
+            className="whitespace-pre-line text-[13px] text-[rgb(124,106,96)] font-serif font-light"
           >
             {"TRÂN TRỌNG BÁO TIN\nLỄ THÀNH HÔN CỦA CON CHÚNG TÔI"}
           </p>
@@ -128,29 +122,25 @@ export function WeddingInfoSection() {
           </div>
 
           <p
-            className="whitespace-pre-line text-[16px] font-normal text-[rgb(145,128,119)] md:text-[18px]"
-            style={{ fontFamily: "var(--font-cormorant), serif" }}
+            className="whitespace-pre-line text-[16px] font-normal text-[rgb(145,128,119)] md:text-[18px] font-serif font-normal"
           >
             {"LỄ THÀNH HÔN ĐƯỢC CỬ HÀNH TẠI\nTƯ GIA"}
           </p>
 
           <p
-            className="mb-2 text-[16px] font-normal uppercase text-[rgb(145,128,119)] md:text-[18px]"
-            style={{ fontFamily: "var(--font-cormorant), serif" }}
+            className="mb-2 text-[16px] font-normal uppercase text-[rgb(145,128,119)] md:text-[18px] font-serif font-normal"
           >
             VÀO LÚC
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
             <span
-              className="text-[20px] text-[rgb(124,106,96)] md:text-[30px]"
-              style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 300 }}
+              className="text-[20px] text-[rgb(124,106,96)] md:text-[30px] font-serif font-light"
             >
               {weddingDate.time}
             </span>
             <span
-              className="text-[16px] text-[rgb(124,106,96)]"
-              style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 300 }}
+              className="text-[16px] text-[rgb(124,106,96)] font-serif font-light"
             >
               {weddingDate.weekday}
             </span>
@@ -160,8 +150,7 @@ export function WeddingInfoSection() {
               |
             </span>
             <span
-              className="text-[30px] text-[rgb(124,106,96)] md:text-[40px]"
-              style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 300 }}
+              className="text-[30px] text-[rgb(124,106,96)] md:text-[40px] font-serif font-light"
             >
               {weddingDate.day}
             </span>
@@ -171,22 +160,19 @@ export function WeddingInfoSection() {
               |
             </span>
             <span
-              className="text-[16px] text-[rgb(124,106,96)]"
-              style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 300 }}
+              className="text-[16px] text-[rgb(124,106,96)] font-serif font-light"
             >
               {weddingDate.month}
             </span>
             <span
-              className="text-[16px] text-[rgb(124,106,96)]"
-              style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 300 }}
+              className="text-[16px] text-[rgb(124,106,96)] font-serif font-light"
             >
               {weddingDate.year}
             </span>
           </div>
 
           <p
-            className="text-[12px] text-[rgb(145,128,119)]"
-            style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 300 }}
+            className="text-[12px] text-[rgb(145,128,119)] font-serif font-light"
           >
             {weddingDate.lunar}
           </p>
