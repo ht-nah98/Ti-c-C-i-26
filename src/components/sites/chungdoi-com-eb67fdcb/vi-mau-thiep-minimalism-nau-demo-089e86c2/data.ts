@@ -10,7 +10,10 @@ const BASE = "/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e
 
 export const asset = {
   theme: (name: string) => `${BASE}/images/theme/${name}`,
-  photo: (name: string) => `${BASE}/images/photos/${name}`,
+  /** Ảnh cưới bản đầy đủ (cạnh dài 1600px) — dùng cho hero và lightbox */
+  photo: (name: string) => `${BASE}/images/couple/full/${name}.jpg`,
+  /** Ảnh vuông 700px — dùng cho lưới album */
+  thumb: (name: string) => `${BASE}/images/couple/thumb/${name}.jpg`,
   misc: (name: string) => `${BASE}/images/misc/${name}`,
 } as const;
 
@@ -39,7 +42,10 @@ export interface TimelineItem {
 export interface StoryMilestone {
   date: string;
   title: string;
-  description: string;
+  /** Câu dẫn ngắn, luôn hiển thị */
+  teaser: string;
+  /** Toàn văn, hiện ra khi khách bấm mở */
+  full: string[];
 }
 
 export interface Wish {
@@ -149,31 +155,53 @@ export const dressCode = {
   ],
 } as const;
 
-/** Câu chuyện của chúng tôi — 4 cột mốc */
+/** Câu chuyện của chúng tôi — 4 cột mốc, bấm để đọc đầy đủ */
 export const story: StoryMilestone[] = [
   {
     date: "Tháng 11 / 2024",
-    title: "Lần đầu biết về nhau",
-    description:
-      "Qua dự án AI 101 — Tiến Anh là speaker, Phương Linh vừa là học viên vừa là giám khảo.",
+    title: "Nơi chúng mình bắt đầu biết về nhau",
+    teaser:
+      "Một lớp học về AI, một người đứng trên bục giảng và một người ngồi dưới vừa học vừa chấm điểm…",
+    full: [
+      "Chúng mình gặp nhau ở AI 101 — một dự án mà cả hai đều tham gia, nhưng ở hai vai trò rất khác nhau.",
+      "Tiến Anh là speaker, người đứng lớp chia sẻ kiến thức. Phương Linh vừa là học viên ngồi dưới nghe, lại vừa là giám khảo chấm điểm phần trình bày.",
+      "Thật lòng mà nói, lúc ấy chẳng ai nghĩ xa xôi gì. Chỉ là hai người làm chung một dự án, trao đổi với nhau những câu chuyện về công việc, về bài giảng, về deadline. Nhưng hóa ra, những điều lớn lao trong đời thường bắt đầu từ những nơi bình thường nhất như thế.",
+    ],
   },
   {
     date: "01 / 01 / 2025",
-    title: "Tin nhắn đầu tiên",
-    description:
-      "Lời chúc năm mới qua Messenger — tin nhắn đầu tiên không vì công việc.",
+    title: "Tin nhắn đầu tiên không vì công việc",
+    teaser:
+      "Một lời chúc năm mới gửi đi lúc giao thừa — và mọi thứ bắt đầu khác đi từ đó…",
+    full: [
+      "Ngày đầu tiên của năm mới, giữa hàng trăm lời chúc qua lại, có một tin nhắn Messenger được gửi đi mà không hề liên quan đến công việc.",
+      "Đó là lần đầu tiên chúng mình nhắn cho nhau chỉ vì muốn nhắn, không phải vì dự án hay bài giảng nào cả.",
+      "Một lời chúc năm mới tưởng như bình thường, nhưng lại là cánh cửa mở ra tất cả những gì đến sau này. Từ hôm đó, những cuộc trò chuyện không còn dừng ở chuyện công việc nữa.",
+    ],
   },
   {
     date: "08 / 02 / 2025",
-    title: "Chính thức thuộc về nhau",
-    description:
-      "Buổi hẹn kéo dài từ sáng đến tối, một lời tỏ tình và một cái gật đầu.",
+    title: "Ngày chính thức thuộc về nhau",
+    teaser:
+      "Một buổi hẹn kéo dài từ sáng đến tối, và một câu hỏi cuối cùng cũng được nói ra…",
+    full: [
+      "Hôm ấy là một buổi hẹn kéo dài từ sáng đến tận tối muộn — kiểu buổi hẹn mà cả hai đều không muốn nó kết thúc.",
+      "Đi hết chỗ này đến chỗ khác, nói hết chuyện này sang chuyện khác, và thời gian cứ thế trôi qua lúc nào không hay.",
+      "Rồi đến cuối ngày, lời tỏ tình được nói ra. Và câu trả lời là một cái gật đầu.",
+      "Từ ngày 08/02/2025, chúng mình chính thức thuộc về nhau.",
+    ],
   },
   {
     date: "30 / 04 / 2026",
-    title: "Lời cầu hôn",
-    description:
-      "Tại Tây Hồ, Hàng Châu — trong chuyến du lịch nước ngoài đầu tiên của hai đứa.",
+    title: "Lời cầu hôn bên Tây Hồ",
+    teaser:
+      "Chuyến đi nước ngoài đầu tiên của chúng mình, và một chiếc nhẫn được lấy ra bên hồ…",
+    full: [
+      "Tây Hồ, Hàng Châu — Trung Quốc. Chuyến du lịch nước ngoài đầu tiên của chúng mình, cùng nhau.",
+      "Giữa khung cảnh mà người ta vẫn bảo là đẹp nhất Giang Nam, bên mặt hồ phẳng lặng, lời cầu hôn được nói ra.",
+      "Không có sân khấu, không có đám đông, chỉ có hai người và một câu hỏi đã ấp ủ từ rất lâu.",
+      "Và rồi chúng mình biết rằng, chuyến đi đầu tiên ấy sẽ là chuyến đầu tiên trong rất nhiều chuyến đi của cả một đời.",
+    ],
   },
 ];
 
@@ -189,16 +217,50 @@ export const closingWords = [
   "Cảm ơn vì đã ở đây, trong ngày quan trọng nhất của chúng tôi.",
 ] as const;
 
-export const albumPhotos = [
-  "d30fe2fc-7c30-4c1c-8515-83142e714040.jpg",
-  "869c2794-6378-4981-a7cb-045489cbc84f.jpg",
-  "d797b1a8-d52e-49a7-9f4f-c6688dd86f98.jpg",
-  "14435a15-ded0-4efd-881d-f274554b148d.jpg",
-  "3a42f7f7-4f7f-4a62-a65c-5da28d132114.jpg",
-  "8b354eab-5468-4b35-b061-efd15a560a42.jpg",
-];
+/** Ảnh bìa — do cô dâu chú rể chọn */
+export const heroPhoto = "DSC01550";
 
-export const heroPhoto = "88aa2b21-f2e3-4f9a-8725-f59c2ef48c9a.jpg";
+/**
+ * Toàn bộ ảnh cưới. 6 ảnh đầu do cô dâu chú rể chọn — đây là những
+ * ảnh hiện trên lưới album; phần còn lại xem được trong lightbox.
+ */
+export const albumPhotos = [
+  // 6 ảnh đại diện
+  "DSC01615",
+  "DSC01779",
+  "DSC02208",
+  "DSC02354",
+  "DSC02559",
+  "DSC02752",
+  // Các ảnh còn lại
+  "DSC01379",
+  "DSC01416",
+  "DSC01438",
+  "DSC01454",
+  "DSC01609",
+  "DSC01628",
+  "DSC01711",
+  "DSC01735",
+  "DSC01738",
+  "DSC01801",
+  "DSC01839",
+  "DSC01861",
+  "DSC02011",
+  "DSC02012",
+  "DSC02023",
+  "DSC02034",
+  "DSC02065",
+  "DSC02187",
+  "DSC02246",
+  "DSC02266",
+  "DSC02320",
+  "DSC02417",
+  "DSC02435",
+  "DSC02524",
+  "DSC02570",
+  "DSC02612",
+  "DSC02661",
+];
 
 /** Ba lời chúc ghim sẵn trên thiệp */
 export const wishes: Wish[] = [

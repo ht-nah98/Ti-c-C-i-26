@@ -20,8 +20,9 @@ export function PhotoAlbumSection() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [openIndex]);
 
-  const visiblePhotos = albumPhotos.slice(0, 4);
-  const remainingCount = albumPhotos.length - 4;
+  const PREVIEW_COUNT = 6;
+  const visiblePhotos = albumPhotos.slice(0, PREVIEW_COUNT);
+  const remainingCount = albumPhotos.length - PREVIEW_COUNT;
 
   function showPrev() {
     setOpenIndex((current) => {
@@ -57,13 +58,19 @@ export function PhotoAlbumSection() {
             onClick={() => setOpenIndex(index)}
           >
             <img
-              src={asset.photo(photo)}
+              src={asset.thumb(photo)}
               alt=""
+              loading="lazy"
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            {index === 3 && remainingCount > 0 ? (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40 text-[18px] font-medium text-white">
-                +{remainingCount}
+            {index === PREVIEW_COUNT - 1 && remainingCount > 0 ? (
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5 bg-black/45 text-white">
+                <span className="font-serif text-[22px] font-light leading-none">
+                  +{remainingCount}
+                </span>
+                <span className="font-serif text-[11px] font-light">
+                  Xem tất cả
+                </span>
               </div>
             ) : null}
           </div>
@@ -117,6 +124,10 @@ export function PhotoAlbumSection() {
           >
             ›
           </button>
+
+          <span className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/40 px-4 py-1.5 font-serif text-[12px] font-light text-white/90">
+            {openIndex + 1} / {albumPhotos.length}
+          </span>
         </div>
       ) : null}
     </div>

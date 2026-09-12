@@ -1,14 +1,18 @@
+"use client";
+
+import { useState } from "react";
 import { asset, story } from "./data";
 
 /**
- * Câu chuyện của chúng tôi — 4 cột mốc dạng timeline dọc.
- * Dùng lại ngôn ngữ thị giác của TimelineSection (đường kẻ dọc + chấm mốc)
- * để thiệp giữ được sự nhất quán.
+ * Câu chuyện của chúng tôi — timeline dọc 4 cột mốc.
+ * Mỗi mốc hiện câu dẫn kèm dấu "…"; bấm vào để mở toàn văn.
  */
 export function StorySection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
     <section className="relative z-10 mx-auto my-4 w-[88%] max-w-[420px] md:max-w-[560px]">
-      <span className="pointer-events-none absolute left-[-15%] top-[8%] z-20 block w-[26%]">
+      <span className="pointer-events-none absolute left-[-15%] top-[8%] z-0 block w-[26%]">
         <img
           src={asset.theme("flower2-decoration.webp")}
           alt=""
@@ -16,7 +20,7 @@ export function StorySection() {
         />
       </span>
 
-      <div className="relative overflow-hidden rounded-[10px] bg-[#f6eadd] px-6 py-9 shadow-[4px_4px_8px_rgba(0,0,0,0.18)]">
+      <div className="relative overflow-hidden rounded-[10px] bg-[#f6eadd] px-5 py-9 shadow-[4px_4px_8px_rgba(0,0,0,0.18)] md:px-7">
         <img
           src={asset.theme("paper.webp")}
           alt=""
@@ -24,35 +28,84 @@ export function StorySection() {
         />
 
         <div className="relative z-10 flex flex-col gap-6">
-          <h2 className="text-center font-serif text-[20px] font-bold uppercase tracking-[0.48px] text-[rgb(124,106,96)]">
-            Câu Chuyện Của Chúng Tôi
-          </h2>
+          <div className="text-center">
+            <h2 className="font-serif text-[20px] font-bold uppercase tracking-[0.48px] text-[rgb(124,106,96)]">
+              Câu Chuyện Của Chúng Tôi
+            </h2>
+            <p className="mt-2 font-serif text-[12px] font-light italic text-[rgb(145,128,119)]">
+              Bấm vào từng mốc thời gian để đọc tiếp
+            </p>
+          </div>
 
-          <div className="relative mx-auto w-full max-w-[420px] pl-7">
+          <div className="relative w-full pl-7">
             {/* Đường kẻ dọc nối các cột mốc */}
             <div
               aria-hidden
               className="absolute bottom-2 left-[7px] top-2 w-px bg-[rgba(124,106,96,0.3)]"
             />
 
-            <ol className="flex flex-col gap-7">
-              {story.map((milestone) => (
-                <li key={milestone.date} className="relative">
-                  <span
-                    aria-hidden
-                    className="absolute left-[-27px] top-[6px] h-[9px] w-[9px] rounded-full bg-[rgb(124,106,96)] ring-4 ring-[#f6eadd]"
-                  />
-                  <p className="font-[family-name:var(--font-nautigal)] text-[22px] leading-none text-[rgb(145,128,119)]">
-                    {milestone.date}
-                  </p>
-                  <p className="mt-1.5 font-serif text-[15px] font-semibold text-[rgb(124,106,96)]">
-                    {milestone.title}
-                  </p>
-                  <p className="mt-1 font-serif text-[13px] font-light leading-relaxed text-[rgb(145,128,119)]">
-                    {milestone.description}
-                  </p>
-                </li>
-              ))}
+            <ol className="flex flex-col gap-5">
+              {story.map((milestone, index) => {
+                const isOpen = openIndex === index;
+                return (
+                  <li key={milestone.date} className="relative">
+                    <span
+                      aria-hidden
+                      className={`absolute left-[-27px] top-[7px] h-[9px] w-[9px] rounded-full ring-4 ring-[#f6eadd] transition-colors ${
+                        isOpen
+                          ? "bg-[rgb(124,106,96)]"
+                          : "bg-[rgba(124,106,96,0.45)]"
+                      }`}
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => setOpenIndex(isOpen ? null : index)}
+                      aria-expanded={isOpen}
+                      className="w-full rounded-[8px] border border-transparent px-3 py-2.5 text-left transition-colors hover:border-[rgba(124,106,96,0.18)] hover:bg-[rgba(255,255,255,0.4)]"
+                    >
+                      <p className="font-[family-name:var(--font-nautigal)] text-[22px] leading-none text-[rgb(145,128,119)]">
+                        {milestone.date}
+                      </p>
+                      <p className="mt-1.5 font-serif text-[15px] font-semibold leading-snug text-[rgb(124,106,96)]">
+                        {milestone.title}
+                      </p>
+
+                      {!isOpen ? (
+                        <p className="mt-1.5 font-serif text-[13px] font-light leading-relaxed text-[rgb(145,128,119)]">
+                          {milestone.teaser}
+                        </p>
+                      ) : null}
+
+                      <span className="mt-2 inline-block font-serif text-[11px] font-light italic text-[rgba(124,106,96,0.75)] underline underline-offset-4">
+                        {isOpen ? "Thu gọn" : "Đọc tiếp"}
+                      </span>
+                    </button>
+
+                    {/* Toàn văn */}
+                    <div
+                      className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
+                        isOpen
+                          ? "grid-rows-[1fr] opacity-100"
+                          : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="mx-3 mb-1 mt-2 rounded-[8px] border border-[rgba(124,106,96,0.15)] bg-[rgba(255,255,255,0.55)] px-4 py-4">
+                          {milestone.full.map((paragraph) => (
+                            <p
+                              key={paragraph}
+                              className="mb-3 font-serif text-[13.5px] font-light leading-[1.85] text-[rgb(124,106,96)] last:mb-0 md:text-[14px]"
+                            >
+                              {paragraph}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
             </ol>
           </div>
         </div>
