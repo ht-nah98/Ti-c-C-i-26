@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { asset, bankAccounts } from "./data";
 import { CloseIcon } from "./icons";
 
@@ -27,13 +28,13 @@ function BankAccountCard({
   bank,
   number,
   holder,
-  hasQr,
+  qr,
 }: {
   role: string;
   bank: string;
   number: string;
   holder: string;
-  hasQr: boolean;
+  qr?: string;
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -48,7 +49,7 @@ function BankAccountCard({
   }
 
   return (
-    <div className="mb-4 rounded-[10px] border border-[rgba(124,106,96,0.2)] bg-[rgba(255,255,255,0.5)] p-4 text-center">
+    <div className="mb-4 rounded-[10px] border border-[rgba(124,106,96,0.2)] bg-white p-4 text-center">
       <p className="font-serif text-[13px] font-semibold text-[rgb(124,106,96)]">
         {role}
       </p>
@@ -68,13 +69,15 @@ function BankAccountCard({
       >
         {copied ? "Đã sao chép ✓" : "Sao chép số tài khoản"}
       </button>
-      {hasQr ? (
+      {qr ? (
         <div className="mt-3 flex flex-col items-center gap-1.5">
-          <div className="flex h-28 w-28 items-center justify-center rounded border border-dashed border-[rgba(124,106,96,0.3)] font-serif text-[10px] text-[rgb(145,128,119)]">
-            Mã QR
-          </div>
+          <img
+            src={asset.qr(qr)}
+            alt={`Mã QR chuyển khoản ${holder}`}
+            className="h-auto w-[168px] rounded-[8px] border border-[rgba(124,106,96,0.15)] bg-white shadow-sm"
+          />
           <span className="font-serif text-[10px] font-light text-[rgba(145,128,119,0.8)]">
-            Quét để chuyển khoản
+            Quét mã để chuyển khoản
           </span>
         </div>
       ) : null}
@@ -84,7 +87,6 @@ function BankAccountCard({
 
 export function GiftBoxSection() {
   const [open, setOpen] = useState(false);
-
   useEffect(() => {
     if (!open) return;
 
@@ -132,34 +134,45 @@ export function GiftBoxSection() {
         </button>
       )}
 
-      {open && (
+      {open 
+        ? createPortal(
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4"
           onClick={() => setOpen(false)}
         >
           <div
-            className="relative w-full max-w-[380px] rounded-[16px] bg-[#FFF7F3] p-6"
+            className="relative flex max-h-[85vh] w-full max-w-[380px] flex-col overflow-hidden rounded-[16px] bg-[#fff7f3] shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="-mx-6 -mt-6 mb-5 rounded-t-[16px] bg-[rgb(124,106,96)] px-6 py-3 text-center">
+            {/* Thanh tiêu đề cố định */}
+            <div className="relative shrink-0 bg-[rgb(124,106,96)] px-6 py-3 text-center">
               <h3 className="font-serif text-[20px] text-white">Hộp Quà Mừng</h3>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/90 transition-opacity hover:opacity-70"
+                aria-label="Đóng"
+              >
+                <CloseIcon className="h-5 w-5" />
+              </button>
             </div>
 
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              className="absolute right-4 top-4 text-white"
-              aria-label="Đóng"
-            >
-              <CloseIcon className="h-5 w-5" />
-            </button>
-
-            {bankAccounts.map((account, i) => (
-              <BankAccountCard key={`${account.number}-${i}`} {...account} />
-            ))}
+            {/* Vùng nội dung cuộn được */}
+            <div className="overflow-y-auto overscroll-contain px-5 pb-5 pt-5">
+              {bankAccounts.map((account, i) => (
+                <BankAccountCard key={`${account.number}-${i}`} {...account} />
+              ))}
+              <p className="mt-1 text-center font-serif text-[11px] font-light italic leading-relaxed text-[rgb(145,128,119)]">
+                Sự hiện diện của quý khách đã là món quà lớn nhất
+                <br />
+                với gia đình chúng tôi
+              </p>
+            </div>
           </div>
-        </div>
-      )}
+        </div>,
+        document.body,
+          )
+        : null}
     </div>
   );
 }

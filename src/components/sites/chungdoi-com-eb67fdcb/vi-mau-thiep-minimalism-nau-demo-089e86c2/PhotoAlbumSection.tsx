@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { asset, albumPhotos } from "./data";
 import { CloseIcon } from "./icons";
 
 export function PhotoAlbumSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   useEffect(() => {
     if (openIndex === null) return;
 
@@ -77,9 +77,10 @@ export function PhotoAlbumSection() {
         ))}
       </div>
 
-      {openIndex !== null ? (
+      {openIndex !== null 
+        ? createPortal(
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/85 p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
           onClick={() => setOpenIndex(null)}
         >
           <button
@@ -128,8 +129,10 @@ export function PhotoAlbumSection() {
           <span className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/40 px-4 py-1.5 font-serif text-[12px] font-light text-white/90">
             {openIndex + 1} / {albumPhotos.length}
           </span>
-        </div>
-      ) : null}
+        </div>,
+        document.body,
+          )
+        : null}
     </div>
   );
 }

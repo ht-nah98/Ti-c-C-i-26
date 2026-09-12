@@ -15,6 +15,8 @@ export const asset = {
   /** Ảnh vuông 700px — dùng cho lưới album */
   thumb: (name: string) => `${BASE}/images/couple/thumb/${name}.jpg`,
   misc: (name: string) => `${BASE}/images/misc/${name}`,
+  /** Ảnh mã QR chuyển khoản */
+  qr: (name: string) => `${BASE}/images/qr/${name}`,
 } as const;
 
 export interface Parent {
@@ -59,7 +61,8 @@ export interface BankAccount {
   bank: string;
   number: string;
   holder: string;
-  hasQr: boolean;
+  /** Tên file ảnh QR trong images/qr/, bỏ trống nếu chưa có */
+  qr?: string;
 }
 
 export const couple = {
@@ -218,7 +221,7 @@ export const closingWords = [
 ] as const;
 
 /** Ảnh bìa — do cô dâu chú rể chọn */
-export const heroPhoto = "DSC01550";
+export const heroPhoto = "DSC01801";
 
 /**
  * Toàn bộ ảnh cưới. 6 ảnh đầu do cô dâu chú rể chọn — đây là những
@@ -233,6 +236,7 @@ export const albumPhotos = [
   "DSC02559",
   "DSC02752",
   // Các ảnh còn lại
+  "DSC01550",
   "DSC01379",
   "DSC01416",
   "DSC01438",
@@ -242,7 +246,6 @@ export const albumPhotos = [
   "DSC01711",
   "DSC01735",
   "DSC01738",
-  "DSC01801",
   "DSC01839",
   "DSC01861",
   "DSC02011",
@@ -265,19 +268,19 @@ export const albumPhotos = [
 /** Ba lời chúc ghim sẵn trên thiệp */
 export const wishes: Wish[] = [
   {
-    name: "Người em",
+    name: "",
     timestamp: "",
     message:
       "Hôm nay là ngày vui của anh chị và cũng là ngày em rất hạnh phúc. Chúc anh chị mãi yêu thương nhau như bây giờ và đạt được mọi ước nguyện trong cuộc sống.",
   },
   {
-    name: "Người em",
+    name: "",
     timestamp: "",
     message:
       "Happy Wedding anh chị! Chúc anh chị của em sẽ có một cuộc sống hôn nhân viên mãn, hạnh phúc. Giờ là lúc anh chị được tận hưởng những điều ngọt ngào và tốt đẹp nhất bởi anh chị xứng đáng!",
   },
   {
-    name: "Người bạn",
+    name: "",
     timestamp: "",
     message:
       "Mong rằng tình yêu của hai bạn sẽ luôn tươi mới như hoa, ngọt ngào như mật, bền chặt như dây và sâu đậm tựa biển để cùng nhau đi hết cuộc đời.",
@@ -290,14 +293,13 @@ export const bankAccounts: BankAccount[] = [
     bank: "Techcombank",
     number: "1410989989",
     holder: "HA TIEN ANH",
-    hasQr: true,
+    qr: "groom-techcombank.jpg",
   },
   {
     role: "Cô Dâu — Bùi Phương Linh",
     bank: "Techcombank",
     number: "19033598273010",
     holder: "BUI PHUONG LINH",
-    hasQr: false,
   },
 ];
 

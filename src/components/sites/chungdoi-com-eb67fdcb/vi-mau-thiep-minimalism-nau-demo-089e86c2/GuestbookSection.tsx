@@ -91,17 +91,24 @@ export function GuestbookSection() {
             key={`${wish.name}-${wish.timestamp}-${i}`}
             className="rounded-[8px] border border-[rgba(124,106,96,0.12)] bg-[rgba(255,255,255,0.55)] p-4"
           >
-            <div className="flex items-baseline justify-between gap-2">
-              <span className="font-serif text-[14px] font-semibold text-[rgb(124,106,96)]">
-                {wish.name}
-              </span>
-              {wish.timestamp ? (
-                <span className="font-serif text-[12px] font-light text-[rgb(145,128,119)]">
-                  {wish.timestamp}
-                </span>
-              ) : null}
-            </div>
-            <p className="mt-2 font-serif text-[14px] font-light leading-relaxed text-[rgb(124,106,96)]">
+            {/* Lời chúc đính sẵn không có tên người gửi — chỉ hiện phần đầu khi có */}
+            {wish.name || wish.timestamp ? (
+              <div className="mb-2 flex items-baseline justify-between gap-2">
+                {wish.name ? (
+                  <span className="font-serif text-[14px] font-semibold text-[rgb(124,106,96)]">
+                    {wish.name}
+                  </span>
+                ) : (
+                  <span />
+                )}
+                {wish.timestamp ? (
+                  <span className="font-serif text-[12px] font-light text-[rgb(145,128,119)]">
+                    {wish.timestamp}
+                  </span>
+                ) : null}
+              </div>
+            ) : null}
+            <p className="font-serif text-[14px] font-light leading-relaxed text-[rgb(124,106,96)]">
               {wish.message}
             </p>
           </div>

@@ -74,7 +74,7 @@ export function CoverOverlay({ onOpen, hidden = false }: CoverOverlayProps) {
             <HeartIcon className="h-7 w-7 text-white" />
           </div>
 
-          <div className="relative rounded-lg bg-[#FFF7F3] shadow-lg">
+          <div className="relative rounded-lg bg-[#fff7f3] shadow-lg">
             <div className="absolute inset-0 overflow-hidden rounded-lg">
               <img
                 src={asset.theme("flower2-decoration.webp")}
