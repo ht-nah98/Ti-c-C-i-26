@@ -1,6 +1,6 @@
 /**
  * Nội dung thiệp cưới — Hà Tiến Anh & Bùi Phương Linh
- * Ngày cưới: Chủ Nhật 20/09/2026 (10 tháng 08 năm Bính Ngọ)
+ * Ngày cưới: Thứ Bảy 26/09/2026 (16 tháng 08 năm Bính Ngọ)
  *
  * Nguồn: /home/user/Desktop/Thiep-Cuoi/THONG-TIN-LE-CUOI.md
  * Giao diện kế thừa từ mẫu minimalism nâu.
@@ -73,19 +73,19 @@ export const couple = {
 /** Ngày cưới — dùng cho hero, lịch, đếm ngược */
 export const weddingDate = {
   time: "11:00",
-  weekday: "CHỦ NHẬT",
-  day: "20",
+  weekday: "THỨ BẢY",
+  day: "26",
   month: "THÁNG 09",
   year: "2026",
-  lunar: "(TỨC NGÀY 10 THÁNG 08 NĂM BÍNH NGỌ)",
-  pretty: "20 tháng 9, 2026",
-  /** ISO cho đếm ngược: 20/09/2026 11:00 giờ Việt Nam (UTC+7) */
-  iso: "2026-09-20T11:00:00+07:00",
+  lunar: "(TỨC NGÀY 16 THÁNG 08 NĂM BÍNH NGỌ)",
+  pretty: "26 tháng 9, 2026",
+  /** ISO cho đếm ngược: 26/09/2026 11:00 giờ Việt Nam (UTC+7) */
+  iso: "2026-09-26T11:00:00+07:00",
   /** Lịch hiển thị tháng 9/2026 */
   calendarMonthLabel: "Tháng 9 / 2026",
   calendarYear: 2026,
   calendarMonth: 9,
-  highlightDay: 20,
+  highlightDay: 26,
 } as const;
 
 export const parents: Parent[] = [
@@ -93,56 +93,44 @@ export const parents: Parent[] = [
     label: "Nhà Trai",
     father: "Ông Hà Thanh Nghị",
     mother: "Bà Nguyễn Thị Thanh Vân",
-    address: "Thanh Miếu, Việt Trì, Phú Thọ",
+    address: "Việt Trì, Phú Thọ",
   },
   {
     label: "Nhà Gái",
     father: "Ông Bùi Ngọc Uyên",
     mother: "Bà Đoàn Thị Quỳnh Hoa",
-    address: "Minh Khai, Hai Bà Trưng, Hà Nội",
+    address: "Hai Bà Trưng, Hà Nội",
   },
 ];
 
-/** Hai nghi lễ trong ngày */
+/** Lễ Thành Hôn — nghi lễ duy nhất trên thiệp */
 export const ceremonies: Ceremony[] = [
-  {
-    name: "LỄ VU QUY",
-    time: "07:05",
-    host: "Tại nhà gái",
-    address:
-      "Phòng 1905, Tầng 19, CT2, Chung cư Skylight, Ngõ Hòa Bình 6, Phố Minh Khai, Hà Nội",
-  },
   {
     name: "LỄ THÀNH HÔN",
     time: "11:00",
-    host: "Tại tư gia nhà trai",
-    address:
-      "Số nhà 04, ngõ 175 Đường Minh Lang, Mai Sơn, Thanh Miếu, Việt Trì, Phú Thọ",
-    mapUrl: "https://maps.app.goo.gl/C3Hui5hKWNtMT5HE6",
+    host: "Tầng 3 — Trung tâm Tiệc cưới & Hội nghị MIPEC Palace",
+    address: "229 Tây Sơn, Phường Kim Liên, Hà Nội",
   },
 ];
 
 /** Địa điểm chính hiển thị ở phần bản đồ — lễ thành hôn nhà trai */
 export const venue = {
-  heading: "Lễ Thành Hôn được cử hành tại",
-  name: "Tư gia nhà trai",
+  heading: "Lễ Thành Hôn được tổ chức tại",
+  name: "MIPEC Palace",
   address:
-    "Số nhà 04, ngõ 175 Đường Minh Lang, Mai Sơn, Thanh Miếu, Việt Trì, Phú Thọ",
-  mapQuery:
-    "Số nhà 04, ngõ 175 Đường Minh Lang, Mai Sơn, Thanh Miếu, Việt Trì, Phú Thọ",
-  mapUrl: "https://maps.app.goo.gl/C3Hui5hKWNtMT5HE6",
+    "Tầng 3 — Trung tâm Tiệc cưới & Hội nghị MIPEC Palace, 229 Tây Sơn, Phường Kim Liên, Hà Nội",
+  mapQuery: "MIPEC Palace, 229 Tây Sơn, Kim Liên, Đống Đa, Hà Nội",
+  mapUrl:
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent("MIPEC Palace, 229 Tây Sơn, Kim Liên, Đống Đa, Hà Nội"),
 } as const;
 
 export const timeline: TimelineItem[] = [
-  { time: "05:00", title: "Nhà trai khởi hành đón dâu", place: "Từ Việt Trì" },
-  { time: "07:05", title: "Lễ Vu Quy", place: "Tại nhà gái", icon: "gate.webp" },
-  { time: "09:00", title: "Rước dâu về Việt Trì", icon: "water.webp" },
-  {
-    time: "11:00",
-    title: "Lễ Thành Hôn",
-    place: "Tại tư gia nhà trai",
-    icon: "cake.webp",
-  },
+  { time: "10:30", title: "Đón khách", place: "Tầng 3, MIPEC Palace" },
+  { time: "11:00", title: "Lễ Thành Hôn", icon: "gate.webp" },
+  { time: "11:30", title: "Khai tiệc", icon: "cake.webp" },
+  { time: "12:00", title: "Cắt bánh & nâng ly", icon: "water.webp" },
+  { time: "13:30", title: "Kết thúc tiệc" },
 ];
 
 /** Tông màu trang phục gợi ý */

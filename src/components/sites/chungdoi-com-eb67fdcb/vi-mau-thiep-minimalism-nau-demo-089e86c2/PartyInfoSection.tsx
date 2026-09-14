@@ -8,21 +8,22 @@ const WEEKDAY_HEADERS = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];
 
 /**
  * Lịch tháng 9/2026: ngày 1/9/2026 là thứ Ba → 1 ô trống đầu (tuần bắt đầu T2).
- * Tháng 9 có 30 ngày. Ngày cưới: 20/09 (Chủ Nhật).
+ * Tháng 9 có 30 ngày. Ngày cưới: 26/09 (Thứ Bảy).
  */
 const LEADING_BLANKS = 1;
 const DAYS_IN_MONTH = 30;
 
+/** 26/09/2026 11:00–13:30 giờ VN (UTC+7) => 04:00–06:30 UTC */
 const GOOGLE_CALENDAR_URL =
   "https://calendar.google.com/calendar/render?action=TEMPLATE" +
   "&text=" +
-  encodeURIComponent("Lễ Thành Hôn — Hà Tiến Anh & Bùi Phương Linh") +
-  "&dates=20260920T040000Z/20260920T080000Z" +
+  encodeURIComponent("Lễ Thành Hôn — Bùi Phương Linh & Hà Tiến Anh") +
+  "&dates=20260926T040000Z/20260926T063000Z" +
   "&details=" +
-  encodeURIComponent("Lễ Vu Quy 07:05 tại nhà gái · Lễ Thành Hôn 11:00 tại tư gia nhà trai") +
+  encodeURIComponent("Đón khách từ 10:30 · Lễ Thành Hôn 11:00") +
   "&location=" +
   encodeURIComponent(
-    "Số nhà 04, ngõ 175 Đường Minh Lang, Mai Sơn, Thanh Miếu, Việt Trì, Phú Thọ",
+    "MIPEC Palace, 229 Tây Sơn, Kim Liên, Đống Đa, Hà Nội",
   );
 
 interface Remaining {
@@ -134,7 +135,7 @@ export function PartyInfoSection() {
 
         <div className="relative z-10 flex flex-col items-center gap-6">
           <h2 className="font-serif text-[20px] font-bold uppercase tracking-[0.48px] text-[rgb(124,106,96)]">
-            Nghi Lễ
+            Lễ Thành Hôn
           </h2>
 
           {/* Đếm ngược tới ngày cưới */}
@@ -145,7 +146,7 @@ export function PartyInfoSection() {
             <Countdown />
           </div>
 
-          {/* Hai nghi lễ */}
+          {/* Nghi lễ */}
           <div className="flex w-full flex-col gap-4">
             {ceremonies.map((ceremony) => (
               <div

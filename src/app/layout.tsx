@@ -39,9 +39,9 @@ const theNautigal = The_Nautigal({
 });
 
 export const metadata: Metadata = {
-  title: "Hà Tiến Anh ❤ Bùi Phương Linh — 20.09.2026",
+  title: "Bùi Phương Linh ❤ Hà Tiến Anh — 26.09.2026",
   description:
-    "Trân trọng kính mời quý vị đến dự Lễ Thành Hôn của chúng tôi — Chủ Nhật, 20 tháng 09 năm 2026.",
+    "Trân trọng kính mời quý vị đến dự Lễ Thành Hôn của chúng tôi — Thứ Bảy, 26 tháng 09 năm 2026, tại MIPEC Palace, Hà Nội.",
 };
 
 export default function RootLayout({
