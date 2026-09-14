@@ -1,7 +1,18 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { wishes, type Wish } from "./data";
+
+/** Thiệp này gửi cho bên nào — đặt qua NEXT_PUBLIC_PHIA khi deploy */
+const PHIA = process.env.NEXT_PUBLIC_PHIA === "gai" ? "gai" : "trai";
+
+interface ApiWish {
+  uuid: string;
+  name: string;
+  comment: string;
+  presence: boolean;
+  created_at: string;
+}
 
 const SAMPLE_WISHES = [
   "Chúc hai bạn trăm năm hạnh phúc, bạc đầu răng long!",
@@ -14,32 +25,79 @@ const SAMPLE_WISHES = [
 const VISIBLE_COUNT = 5;
 
 export function GuestbookSection() {
+  /** Lời chúc đính sẵn — luôn hiển thị ở cuối danh sách */
   const [items, setItems] = useState<Wish[]>(wishes);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [sampleIndex, setSampleIndex] = useState(0);
   const [showAll, setShowAll] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [notice, setNotice] = useState<string | null>(null);
+
+  /** Tải lời chúc từ database — chung cho cả hai thiệp */
+  const taiLoiChuc = useCallback(async () => {
+    try {
+      const res = await fetch("/api/loi-chuc?per=100", { cache: "no-store" });
+      if (!res.ok) return;
+      const json = (await res.json()) as {
+        data?: { lists?: ApiWish[] };
+      };
+      const tuKhach = (json.data?.lists ?? []).map<Wish>((w) => ({
+        name: w.name,
+        timestamp: new Date(w.created_at).toLocaleString("vi-VN"),
+        message: w.comment,
+      }));
+      if (tuKhach.length) {
+        setItems([...tuKhach, ...wishes]);
+      }
+    } catch {
+      // Không có mạng hoặc chưa cấu hình database — giữ lời chúc đính sẵn
+    }
+  }, []);
+
+  useEffect(() => {
+    void taiLoiChuc();
+  }, [taiLoiChuc]);
 
   function handleMagic() {
     setMessage(SAMPLE_WISHES[sampleIndex % SAMPLE_WISHES.length]);
     setSampleIndex((prev) => prev + 1);
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const trimmedName = name.trim();
     const trimmedMessage = message.trim();
-    if (!trimmedName || !trimmedMessage) return;
+    if (!trimmedName || !trimmedMessage || sending) return;
 
-    const newWish: Wish = {
-      name: trimmedName,
-      timestamp: new Date().toLocaleString("vi-VN"),
-      message: trimmedMessage,
-    };
+    setSending(true);
+    setNotice(null);
 
-    setItems((prev) => [newWish, ...prev]);
-    setName("");
-    setMessage("");
+    try {
+      const res = await fetch("/api/loi-chuc", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: trimmedName,
+          comment: trimmedMessage,
+          phia: PHIA,
+        }),
+      });
+
+      if (res.ok) {
+        setName("");
+        setMessage("");
+        setNotice("Cảm ơn bạn đã gửi lời chúc!");
+        await taiLoiChuc();
+      } else {
+        const json = (await res.json().catch(() => ({}))) as { error?: string };
+        setNotice(json.error ?? "Chưa gửi được, bạn thử lại giúp nhé.");
+      }
+    } catch {
+      setNotice("Không kết nối được, bạn kiểm tra mạng rồi thử lại nhé.");
+    } finally {
+      setSending(false);
+    }
   }
 
   const visibleItems = showAll ? items : items.slice(0, VISIBLE_COUNT);
@@ -79,10 +137,20 @@ export function GuestbookSection() {
         </div>
         <button
           type="submit"
-          className="self-center rounded-full bg-[rgb(124,106,96)] px-6 py-2 font-serif text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
+          disabled={sending}
+          className="self-center rounded-full bg-[rgb(124,106,96)] px-6 py-2 font-serif text-sm font-semibold text-white transition-transform hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-60"
         >
-          GỬI LỜI CHÚC
+          {sending ? "ĐANG GỬI…" : "GỬI LỜI CHÚC"}
         </button>
+
+        {notice ? (
+          <p
+            role="status"
+            className="text-center font-serif text-[12px] font-light italic text-[rgb(145,128,119)]"
+          >
+            {notice}
+          </p>
+        ) : null}
       </form>
 
       <div className="mx-auto flex max-w-[460px] flex-col gap-3">
