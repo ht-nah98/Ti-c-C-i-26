@@ -116,6 +116,8 @@ export const ceremonies: Ceremony[] = [
 /** Địa điểm chính hiển thị ở phần bản đồ — lễ thành hôn nhà trai */
 export const venue = {
   heading: "Lễ Thành Hôn được tổ chức tại",
+  /** Dòng hiển thị trong card "Thông tin lễ cưới" (xuống dòng bằng \n) */
+  shortLine: "LỄ THÀNH HÔN ĐƯỢC TỔ CHỨC TẠI\nTRUNG TÂM TIỆC CƯỚI & HỘI NGHỊ MIPEC PALACE",
   name: "MIPEC Palace",
   address:
     "Tầng 3 — Trung tâm Tiệc cưới & Hội nghị MIPEC Palace, 229 Tây Sơn, Phường Kim Liên, Hà Nội",

@@ -1,4 +1,4 @@
-import { asset, couple, parents, weddingDate } from "./data";
+import { asset, couple, parents, weddingDate, venue } from "./data";
 
 export function WeddingInfoSection() {
   return (
@@ -124,7 +124,7 @@ export function WeddingInfoSection() {
           <p
             className="whitespace-pre-line text-[16px] font-normal text-[rgb(145,128,119)] md:text-[18px] font-serif font-normal"
           >
-            {"LỄ THÀNH HÔN ĐƯỢC CỬ HÀNH TẠI\nTƯ GIA"}
+            {venue.shortLine}
           </p>
 
           <p
