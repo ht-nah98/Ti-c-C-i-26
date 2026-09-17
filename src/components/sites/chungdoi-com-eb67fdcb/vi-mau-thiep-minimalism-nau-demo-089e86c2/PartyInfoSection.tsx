@@ -73,7 +73,7 @@ function Countdown() {
 
   if (!remaining) {
     return (
-      <p className="font-serif text-[16px] font-light text-[rgb(124,106,96)]">
+      <p className="font-serif text-[17px] font-light text-[rgb(124,106,96)]">
         Hôm nay là ngày chúng tôi về chung một nhà
       </p>
     );
@@ -90,10 +90,10 @@ function Countdown() {
     <div className="flex items-start justify-center gap-4 md:gap-6">
       {units.map(([value, label]) => (
         <div key={label} className="flex w-[52px] flex-col items-center">
-          <span className="font-serif text-[26px] font-light leading-none text-[rgb(124,106,96)] md:text-[30px]">
+          <span className="font-serif text-[27px] font-light leading-none text-[rgb(124,106,96)] md:text-[31px]">
             {String(value).padStart(2, "0")}
           </span>
-          <span className="mt-1.5 font-serif text-[10px] font-light uppercase tracking-[1.2px] text-[rgb(145,128,119)]">
+          <span className="mt-1.5 font-serif text-[11px] font-light uppercase tracking-[1.2px] text-[rgb(145,128,119)]">
             {label}
           </span>
         </div>
@@ -134,13 +134,13 @@ export function PartyInfoSection() {
         />
 
         <div className="relative z-10 flex flex-col items-center gap-6">
-          <h2 className="font-serif text-[20px] font-bold uppercase tracking-[0.48px] text-[rgb(124,106,96)]">
+          <h2 className="font-serif text-[21px] font-bold uppercase tracking-[0.48px] text-[rgb(124,106,96)]">
             Lễ Thành Hôn
           </h2>
 
           {/* Đếm ngược tới ngày cưới */}
           <div className="w-full rounded-[10px] bg-[rgba(255,255,255,0.55)] px-3 py-4">
-            <p className="mb-3 font-serif text-[12px] font-light uppercase tracking-[1.4px] text-[rgb(145,128,119)]">
+            <p className="mb-3 font-serif text-[13px] font-light uppercase tracking-[1.4px] text-[rgb(145,128,119)]">
               Còn lại
             </p>
             <Countdown />
@@ -153,16 +153,16 @@ export function PartyInfoSection() {
                 key={ceremony.name}
                 className="rounded-[10px] border border-[rgba(124,106,96,0.18)] bg-[rgba(255,255,255,0.5)] px-4 py-5"
               >
-                <p className="font-serif text-[15px] font-bold uppercase tracking-[0.8px] text-[rgb(124,106,96)]">
+                <p className="font-serif text-[16px] font-bold uppercase tracking-[0.8px] text-[rgb(124,106,96)]">
                   {ceremony.name}
                 </p>
-                <p className="mt-2 font-serif text-[30px] font-light leading-none text-[rgb(124,106,96)]">
+                <p className="mt-2 font-serif text-[31px] font-light leading-none text-[rgb(124,106,96)]">
                   {ceremony.time}
                 </p>
-                <p className="mt-2 font-serif text-[13px] font-light text-[rgb(145,128,119)]">
+                <p className="mt-2 font-serif text-[14px] font-light text-[rgb(145,128,119)]">
                   {ceremony.host}
                 </p>
-                <p className="mx-auto mt-1 max-w-[300px] font-serif text-[12px] font-light leading-relaxed text-[rgb(145,128,119)]">
+                <p className="mx-auto mt-1 max-w-[300px] font-serif text-[13px] font-light leading-relaxed text-[rgb(145,128,119)]">
                   {ceremony.address}
                 </p>
                 {ceremony.mapUrl ? (
@@ -170,7 +170,7 @@ export function PartyInfoSection() {
                     href={ceremony.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1.5 font-serif text-[12px] text-[rgb(124,106,96)] underline underline-offset-4"
+                    className="mt-3 inline-flex items-center gap-1.5 font-serif text-[13px] text-[rgb(124,106,96)] underline underline-offset-4"
                   >
                     <MapPinIcon className="h-3.5 w-3.5" />
                     Xem bản đồ
@@ -182,32 +182,32 @@ export function PartyInfoSection() {
 
           {/* Ngày cưới */}
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="font-serif text-[16px] font-light text-[rgb(124,106,96)]">
+            <span className="font-serif text-[17px] font-light text-[rgb(124,106,96)]">
               {weddingDate.weekday}
             </span>
-            <span className="font-serif text-[24px] font-light leading-none text-[rgba(124,106,96,0.4)]">
+            <span className="font-serif text-[25px] font-light leading-none text-[rgba(124,106,96,0.4)]">
               |
             </span>
-            <span className="font-serif text-[30px] font-light text-[rgb(124,106,96)] md:text-[40px]">
+            <span className="font-serif text-[31px] font-light text-[rgb(124,106,96)] md:text-[41px]">
               {weddingDate.day}
             </span>
-            <span className="font-serif text-[24px] font-light leading-none text-[rgba(124,106,96,0.4)]">
+            <span className="font-serif text-[25px] font-light leading-none text-[rgba(124,106,96,0.4)]">
               |
             </span>
-            <span className="font-serif text-[16px] font-light text-[rgb(124,106,96)]">
+            <span className="font-serif text-[17px] font-light text-[rgb(124,106,96)]">
               {weddingDate.month}
             </span>
-            <span className="font-serif text-[24px] font-light text-[rgb(124,106,96)]">
+            <span className="font-serif text-[25px] font-light text-[rgb(124,106,96)]">
               {weddingDate.year}
             </span>
           </div>
-          <p className="-mt-3 font-serif text-[12px] font-light text-[rgb(145,128,119)]">
+          <p className="-mt-3 font-serif text-[13px] font-light text-[rgb(145,128,119)]">
             {weddingDate.lunar}
           </p>
 
           {/* Lịch tháng 9/2026 */}
           <div className="w-full rounded-[10px] bg-[rgba(255,255,255,0.55)] px-3 py-2">
-            <p className="py-2.5 text-center font-[family-name:var(--font-nautigal)] text-[24px] text-[rgb(145,128,119)]">
+            <p className="py-2.5 text-center font-[family-name:var(--font-nautigal)] text-[25px] text-[rgb(145,128,119)]">
               {weddingDate.calendarMonthLabel}
             </p>
 
@@ -215,7 +215,7 @@ export function PartyInfoSection() {
               {WEEKDAY_HEADERS.map((label) => (
                 <div
                   key={label}
-                  className="py-1.5 text-center font-serif text-[10px] font-medium text-[rgb(145,128,119)] md:text-[11px]"
+                  className="py-1.5 text-center font-serif text-[11px] font-medium text-[rgb(145,128,119)] md:text-[12px]"
                 >
                   {label}
                 </div>
@@ -231,12 +231,12 @@ export function PartyInfoSection() {
                   {day === null ? null : day === weddingDate.highlightDay ? (
                     <span className="relative flex h-[24px] w-[26px] items-center justify-center md:h-[28px] md:w-[30px]">
                       <HeartIcon className="absolute inset-0 h-full w-full text-[#ded9d7] drop-shadow-sm" />
-                      <span className="relative z-10 text-[11px] font-bold text-[rgb(51,51,51)] md:text-[12px]">
+                      <span className="relative z-10 text-[12px] font-bold text-[rgb(51,51,51)] md:text-[13px]">
                         {day}
                       </span>
                     </span>
                   ) : (
-                    <span className="font-serif text-[12px] font-light text-[rgb(145,128,119)] md:text-[13px]">
+                    <span className="font-serif text-[13px] font-light text-[rgb(145,128,119)] md:text-[14px]">
                       {day}
                     </span>
                   )}
@@ -249,7 +249,7 @@ export function PartyInfoSection() {
             href={GOOGLE_CALENDAR_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-1 inline-flex items-center justify-center gap-2 text-sm text-[rgb(145,128,119)] underline underline-offset-4"
+            className="mt-1 inline-flex items-center justify-center gap-2 text-[15px] text-[rgb(145,128,119)] underline underline-offset-4"
           >
             <CalendarIcon className="h-4 w-4" />
             Thêm vào lịch

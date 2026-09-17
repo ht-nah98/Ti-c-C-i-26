@@ -3,10 +3,10 @@ import { asset, dressCode, timeline } from "./data";
 export function DressCodeSection() {
   return (
     <div className="relative z-10 flex flex-col items-center gap-5 px-6 py-10 md:px-10 md:py-12">
-      <h2 className="font-serif text-[20px] font-bold uppercase text-[rgb(124,106,96)]">
+      <h2 className="font-serif text-[21px] font-bold uppercase text-[rgb(124,106,96)]">
         {dressCode.title}
       </h2>
-      <p className="font-serif text-[16px] text-[rgb(145,128,119)]">
+      <p className="font-serif text-[17px] text-[rgb(145,128,119)]">
         {dressCode.subtitle}
       </p>
       <div className="flex flex-wrap justify-center gap-4">
@@ -16,7 +16,7 @@ export function DressCodeSection() {
               className="h-9 w-9 rounded-full border border-[rgba(124,106,96,0.25)] shadow-sm"
               style={{ backgroundColor: color.hex }}
             />
-            <span className="font-serif text-[11px] font-light text-[rgb(145,128,119)]">
+            <span className="font-serif text-[12px] font-light text-[rgb(145,128,119)]">
               {color.name}
             </span>
           </div>
@@ -37,7 +37,7 @@ export function TimelineSection() {
         />
 
         <div className="relative z-10 flex flex-col gap-4 px-2">
-          <h2 className="text-center text-[20px] font-serif font-bold uppercase text-[rgb(124,106,96)]">
+          <h2 className="text-center text-[21px] font-serif font-bold uppercase text-[rgb(124,106,96)]">
             LỊCH TRÌNH NGÀY CƯỚI
           </h2>
 
@@ -69,14 +69,14 @@ export function TimelineSection() {
                       className="h-12 w-12 object-contain opacity-80"
                     />
                   ) : null}
-                  <span className="text-[17px] font-serif font-light text-[rgb(124,106,96)]">
+                  <span className="text-[18px] font-serif font-light text-[rgb(124,106,96)]">
                     {item.time}
                   </span>
-                  <span className="font-serif text-[15px] font-light text-[rgb(145,128,119)]">
+                  <span className="font-serif text-[16px] font-light text-[rgb(145,128,119)]">
                     {item.title}
                   </span>
                   {item.place ? (
-                    <span className="font-serif text-[12px] font-light italic text-[rgba(145,128,119,0.85)]">
+                    <span className="font-serif text-[13px] font-light italic text-[rgba(145,128,119,0.85)]">
                       {item.place}
                     </span>
                   ) : null}

@@ -14,17 +14,17 @@ export function ClosingSection() {
         {closingWords.map((line) => (
           <p
             key={line}
-            className="font-serif text-[14px] font-light italic leading-[1.9] text-[rgb(124,106,96)] md:text-[15px]"
+            className="font-serif text-[15px] font-light italic leading-[1.9] text-[rgb(124,106,96)] md:text-[16px]"
           >
             {line}
           </p>
         ))}
 
-        <span className="font-serif text-[14px] text-[rgb(145,128,119)]">
+        <span className="font-serif text-[15px] text-[rgb(145,128,119)]">
           ❦
         </span>
 
-        <p className="font-[family-name:var(--font-nautigal)] text-[34px] leading-none text-[rgb(124,106,96)] md:text-[40px]">
+        <p className="font-[family-name:var(--font-nautigal)] text-[35px] leading-none text-[rgb(124,106,96)] md:text-[41px]">
           {couple.groom.short} &amp; {couple.bride.short}
         </p>
       </div>

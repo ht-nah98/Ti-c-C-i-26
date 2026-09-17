@@ -46,7 +46,7 @@ export function PhotoAlbumSection() {
         className="pointer-events-none absolute right-[-10%] top-[10%] w-[30%] max-w-none object-contain opacity-[0.12]"
       />
 
-      <h2 className="mb-6 text-center text-[20px] font-serif font-bold uppercase text-[rgb(124,106,96)]">
+      <h2 className="mb-6 text-center text-[21px] font-serif font-bold uppercase text-[rgb(124,106,96)]">
         Album Ảnh
       </h2>
 
@@ -65,10 +65,10 @@ export function PhotoAlbumSection() {
             />
             {index === PREVIEW_COUNT - 1 && remainingCount > 0 ? (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5 bg-black/45 text-white">
-                <span className="font-serif text-[22px] font-light leading-none">
+                <span className="font-serif text-[23px] font-light leading-none">
                   +{remainingCount}
                 </span>
-                <span className="font-serif text-[11px] font-light">
+                <span className="font-serif text-[12px] font-light">
                   Xem tất cả
                 </span>
               </div>
@@ -126,7 +126,7 @@ export function PhotoAlbumSection() {
             ›
           </button>
 
-          <span className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/40 px-4 py-1.5 font-serif text-[12px] font-light text-white/90">
+          <span className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/40 px-4 py-1.5 font-serif text-[13px] font-light text-white/90">
             {openIndex + 1} / {albumPhotos.length}
           </span>
         </div>,

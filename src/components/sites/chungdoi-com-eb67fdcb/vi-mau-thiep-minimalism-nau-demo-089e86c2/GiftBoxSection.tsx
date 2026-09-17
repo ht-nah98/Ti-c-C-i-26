@@ -73,22 +73,22 @@ function BankAccountCard({
 
   return (
     <div className="mb-4 rounded-[10px] border border-[rgba(124,106,96,0.2)] bg-white p-4 text-center">
-      <p className="font-serif text-[13px] font-semibold text-[rgb(124,106,96)]">
+      <p className="font-serif text-[14px] font-semibold text-[rgb(124,106,96)]">
         {role}
       </p>
-      <p className="mt-1 font-serif text-[11px] font-light text-[rgb(145,128,119)]">
+      <p className="mt-1 font-serif text-[12px] font-light text-[rgb(145,128,119)]">
         {bank}
       </p>
-      <p className="mt-2 font-mono text-[15px] tracking-[0.5px] text-[rgb(124,106,96)]">
+      <p className="mt-2 font-mono text-[16px] tracking-[0.5px] text-[rgb(124,106,96)]">
         {groupDigits(number)}
       </p>
-      <p className="mt-1 font-serif text-[11px] font-light uppercase tracking-[0.6px] text-[rgb(145,128,119)]">
+      <p className="mt-1 font-serif text-[12px] font-light uppercase tracking-[0.6px] text-[rgb(145,128,119)]">
         {holder}
       </p>
       <button
         type="button"
         onClick={handleCopy}
-        className="mt-3 rounded-full border border-[rgba(124,106,96,0.3)] px-4 py-1.5 font-serif text-[11px] text-[rgb(124,106,96)] transition-transform hover:scale-[1.03]"
+        className="mt-3 rounded-full border border-[rgba(124,106,96,0.3)] px-4 py-1.5 font-serif text-[12px] text-[rgb(124,106,96)] transition-transform hover:scale-[1.03]"
       >
         {copied ? "Đã sao chép ✓" : "Sao chép số tài khoản"}
       </button>
@@ -99,7 +99,7 @@ function BankAccountCard({
             alt={`Mã QR chuyển khoản ${holder}`}
             className="h-auto w-[168px] rounded-[8px] border border-[rgba(124,106,96,0.15)] bg-white shadow-sm"
           />
-          <span className="font-serif text-[10px] font-light text-[rgba(145,128,119,0.8)]">
+          <span className="font-serif text-[11px] font-light text-[rgba(145,128,119,0.8)]">
             Quét mã để chuyển khoản
           </span>
         </div>
@@ -129,7 +129,7 @@ export function GiftBoxSection() {
         className="pointer-events-none absolute left-1/2 top-0 w-[120%] max-w-none -translate-x-1/2 object-contain opacity-[0.08]"
       />
 
-      <h2 className="relative mb-4 text-center font-serif text-[20px] font-bold uppercase text-[rgb(124,106,96)]">
+      <h2 className="relative mb-4 text-center font-serif text-[21px] font-bold uppercase text-[rgb(124,106,96)]">
         Hộp Quà Mừng
       </h2>
 
@@ -182,7 +182,7 @@ export function GiftBoxSection() {
               alt="Hộp quà mừng"
               style={{ animation: "mbFloat 3.6s ease-in-out infinite" }}
             />
-            <p className="font-serif text-[12px] text-[rgb(124,106,96)]">
+            <p className="font-serif text-[13px] text-[rgb(124,106,96)]">
               Nhấn để mở
             </p>
           </button>
@@ -201,7 +201,7 @@ export function GiftBoxSection() {
           >
             {/* Thanh tiêu đề cố định */}
             <div className="relative shrink-0 bg-[rgb(124,106,96)] px-6 py-3 text-center">
-              <h3 className="font-serif text-[20px] text-white">Hộp Quà Mừng</h3>
+              <h3 className="font-serif text-[21px] text-white">Hộp Quà Mừng</h3>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
@@ -217,7 +217,7 @@ export function GiftBoxSection() {
               {bankAccounts.map((account, i) => (
                 <BankAccountCard key={`${account.number}-${i}`} {...account} />
               ))}
-              <p className="mt-1 text-center font-serif text-[11px] font-light italic leading-relaxed text-[rgb(145,128,119)]">
+              <p className="mt-1 text-center font-serif text-[12px] font-light italic leading-relaxed text-[rgb(145,128,119)]">
                 Sự hiện diện của quý khách đã là món quà lớn nhất
                 <br />
                 với gia đình chúng tôi

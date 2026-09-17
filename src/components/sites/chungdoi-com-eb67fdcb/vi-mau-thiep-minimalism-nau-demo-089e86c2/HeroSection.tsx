@@ -15,7 +15,7 @@ export function HeroSection() {
       />
 
       <p
-        className="relative z-10 whitespace-pre-line text-[13px] uppercase tracking-[2.56px] md:text-[16px]"
+        className="relative z-10 whitespace-pre-line text-[14px] uppercase tracking-[2.56px] md:text-[17px]"
         style={{
           fontFamily: "var(--font-cormorant)",
           fontWeight: 600,
@@ -27,13 +27,13 @@ export function HeroSection() {
 
       <div className="relative z-10 mt-3 flex items-center justify-center gap-2 md:mt-4 md:gap-3">
         <span
-          className="font-serif italic text-[clamp(30px,8.4vw,37px)] md:text-[46px]"
+          className="font-serif italic text-[clamp(30px,8.4vw,37px)] md:text-[47px]"
           style={{ fontWeight: 300, color: "rgb(130,119,113)" }}
         >
           {couple.groom.short}
         </span>
         <span
-          className="text-[42px] leading-none md:text-[54px]"
+          className="text-[43px] leading-none md:text-[55px]"
           style={{
             fontFamily: "var(--font-nautigal)",
             color: "rgb(145,128,119)",
@@ -42,7 +42,7 @@ export function HeroSection() {
           &amp;
         </span>
         <span
-          className="font-serif italic text-[clamp(30px,8.4vw,37px)] md:text-[46px]"
+          className="font-serif italic text-[clamp(30px,8.4vw,37px)] md:text-[47px]"
           style={{ fontWeight: 300, color: "rgb(130,119,113)" }}
         >
           {couple.bride.short}

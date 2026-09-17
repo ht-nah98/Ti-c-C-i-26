@@ -89,27 +89,27 @@ export function CoverOverlay({ onOpen, hidden = false }: CoverOverlayProps) {
             </div>
 
             <div className="relative z-10 px-6 pb-14 pt-28 text-center md:pb-8 md:pt-24">
-              <h1 className="mb-2 flex flex-col items-center leading-tight text-3xl sm:text-4xl">
-                <span className="font-[family-name:var(--font-eb-garamond)] text-[36px] text-[rgb(124,106,96)]">
+              <h1 className="mb-2 flex flex-col items-center leading-tight text-[31px] sm:text-[37px]">
+                <span className="font-[family-name:var(--font-eb-garamond)] text-[37px] text-[rgb(124,106,96)]">
                   {couple.groom.short}
                 </span>
-                <span className="font-serif text-[20px] text-[rgb(124,106,96)]">&amp;</span>
-                <span className="font-[family-name:var(--font-eb-garamond)] text-[36px] text-[rgb(124,106,96)]">
+                <span className="font-serif text-[21px] text-[rgb(124,106,96)]">&amp;</span>
+                <span className="font-[family-name:var(--font-eb-garamond)] text-[37px] text-[rgb(124,106,96)]">
                   {couple.bride.short}
                 </span>
               </h1>
-              <span className="block text-[14px] text-[rgb(124,106,96)]">❦</span>
-              <p className="font-[family-name:var(--font-lora)] text-[18px] text-[rgba(124,106,96,0.72)]">
+              <span className="block text-[15px] text-[rgb(124,106,96)]">❦</span>
+              <p className="font-[family-name:var(--font-lora)] text-[19px] text-[rgba(124,106,96,0.72)]">
                 {weddingDate.pretty}
               </p>
-              <p className="font-[family-name:var(--font-lora)] text-[18px] text-[rgba(124,106,96,0.72)]">
+              <p className="font-[family-name:var(--font-lora)] text-[19px] text-[rgba(124,106,96,0.72)]">
                 Thân Mời
               </p>
 
               <button
                 type="button"
                 onClick={onOpen}
-                className="relative mt-6 rounded-full bg-[rgb(124,106,96)] px-8 py-2.5 font-[family-name:var(--font-lora)] text-lg font-semibold text-white shadow-lg transition-transform hover:scale-[1.03] sm:font-medium"
+                className="relative mt-6 rounded-full bg-[rgb(124,106,96)] px-8 py-2.5 font-[family-name:var(--font-lora)] text-[19px] font-semibold text-white shadow-lg transition-transform hover:scale-[1.03] sm:font-medium"
                 style={{ fontSize: "18px" }}
               >
                 Mở thiệp

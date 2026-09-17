@@ -104,7 +104,7 @@ export function GuestbookSection() {
 
   return (
     <div className="@container relative z-10 overflow-x-clip px-6 py-10">
-      <h2 className="mb-6 text-center font-serif text-[20px] font-bold uppercase text-[rgb(124,106,96)]">
+      <h2 className="mb-6 text-center font-serif text-[21px] font-bold uppercase text-[rgb(124,106,96)]">
         Sổ lưu bút
       </h2>
 
@@ -117,19 +117,19 @@ export function GuestbookSection() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Nhập tên*"
-          className="w-full rounded-lg border border-[rgba(124,106,96,0.3)] bg-white/60 px-4 py-3 text-sm text-[rgb(124,106,96)] focus:outline-none focus:ring-2 focus:ring-[rgba(124,106,96,0.3)]"
+          className="w-full rounded-lg border border-[rgba(124,106,96,0.3)] bg-white/60 px-4 py-3 text-[15px] text-[rgb(124,106,96)] focus:outline-none focus:ring-2 focus:ring-[rgba(124,106,96,0.3)]"
         />
         <div className="flex items-start gap-2">
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Nhập lời chúc*"
-            className="h-[60px] w-full resize-none rounded-lg border border-[rgba(124,106,96,0.3)] bg-white/60 px-4 py-3 text-sm text-[rgb(124,106,96)] focus:outline-none focus:ring-2 focus:ring-[rgba(124,106,96,0.3)] md:h-[80px]"
+            className="h-[60px] w-full resize-none rounded-lg border border-[rgba(124,106,96,0.3)] bg-white/60 px-4 py-3 text-[15px] text-[rgb(124,106,96)] focus:outline-none focus:ring-2 focus:ring-[rgba(124,106,96,0.3)] md:h-[80px]"
           />
           <button
             type="button"
             onClick={handleMagic}
-            className="shrink-0 rounded-lg p-2 text-base leading-none transition-all duration-200 hover:scale-110"
+            className="shrink-0 rounded-lg p-2 text-[17px] leading-none transition-all duration-200 hover:scale-110"
             aria-label="Điền lời chúc mẫu"
           >
             🪄
@@ -138,7 +138,7 @@ export function GuestbookSection() {
         <button
           type="submit"
           disabled={sending}
-          className="self-center rounded-full bg-[rgb(124,106,96)] px-6 py-2 font-serif text-sm font-semibold text-white transition-transform hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-60"
+          className="self-center rounded-full bg-[rgb(124,106,96)] px-6 py-2 font-serif text-[15px] font-semibold text-white transition-transform hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {sending ? "ĐANG GỬI…" : "GỬI LỜI CHÚC"}
         </button>
@@ -146,7 +146,7 @@ export function GuestbookSection() {
         {notice ? (
           <p
             role="status"
-            className="text-center font-serif text-[12px] font-light italic text-[rgb(145,128,119)]"
+            className="text-center font-serif text-[13px] font-light italic text-[rgb(145,128,119)]"
           >
             {notice}
           </p>
@@ -163,20 +163,20 @@ export function GuestbookSection() {
             {wish.name || wish.timestamp ? (
               <div className="mb-2 flex items-baseline justify-between gap-2">
                 {wish.name ? (
-                  <span className="font-serif text-[14px] font-semibold text-[rgb(124,106,96)]">
+                  <span className="font-serif text-[15px] font-semibold text-[rgb(124,106,96)]">
                     {wish.name}
                   </span>
                 ) : (
                   <span />
                 )}
                 {wish.timestamp ? (
-                  <span className="font-serif text-[12px] font-light text-[rgb(145,128,119)]">
+                  <span className="font-serif text-[13px] font-light text-[rgb(145,128,119)]">
                     {wish.timestamp}
                   </span>
                 ) : null}
               </div>
             ) : null}
-            <p className="font-serif text-[14px] font-light leading-relaxed text-[rgb(124,106,96)]">
+            <p className="font-serif text-[15px] font-light leading-relaxed text-[rgb(124,106,96)]">
               {wish.message}
             </p>
           </div>
@@ -186,7 +186,7 @@ export function GuestbookSection() {
           <button
             type="button"
             onClick={() => setShowAll((prev) => !prev)}
-            className="mx-auto mt-2 font-serif text-sm font-semibold text-[rgb(124,106,96)] underline-offset-2 hover:underline"
+            className="mx-auto mt-2 font-serif text-[15px] font-semibold text-[rgb(124,106,96)] underline-offset-2 hover:underline"
           >
             {showAll ? "Thu gọn" : "Xem thêm"}
           </button>

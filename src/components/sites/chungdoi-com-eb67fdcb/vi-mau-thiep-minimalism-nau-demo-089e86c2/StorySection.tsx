@@ -29,10 +29,10 @@ export function StorySection() {
 
         <div className="relative z-10 flex flex-col gap-6">
           <div className="text-center">
-            <h2 className="font-serif text-[20px] font-bold uppercase tracking-[0.48px] text-[rgb(124,106,96)]">
+            <h2 className="font-serif text-[21px] font-bold uppercase tracking-[0.48px] text-[rgb(124,106,96)]">
               Câu Chuyện Của Chúng Mình
             </h2>
-            <p className="mt-2 font-serif text-[12px] font-light italic text-[rgb(145,128,119)]">
+            <p className="mt-2 font-serif text-[13px] font-light italic text-[rgb(145,128,119)]">
               Bấm vào từng mốc thời gian để đọc tiếp
             </p>
           </div>
@@ -42,7 +42,7 @@ export function StorySection() {
             {storyIntro.map((paragraph) => (
               <p
                 key={paragraph}
-                className="mb-3 font-serif text-[13.5px] font-light leading-[1.85] text-[rgb(124,106,96)] last:mb-0 md:text-[14px]"
+                className="mb-3 font-serif text-[14.5px] font-light leading-[1.85] text-[rgb(124,106,96)] last:mb-0 md:text-[15px]"
               >
                 {paragraph}
               </p>
@@ -76,20 +76,20 @@ export function StorySection() {
                       aria-expanded={isOpen}
                       className="w-full rounded-[8px] border border-transparent px-3 py-2.5 text-left transition-colors hover:border-[rgba(124,106,96,0.18)] hover:bg-[rgba(255,255,255,0.4)]"
                     >
-                      <p className="font-[family-name:var(--font-nautigal)] text-[22px] leading-none text-[rgb(145,128,119)]">
+                      <p className="font-[family-name:var(--font-nautigal)] text-[23px] leading-none text-[rgb(145,128,119)]">
                         {milestone.date}
                       </p>
-                      <p className="mt-1.5 font-serif text-[15px] font-semibold leading-snug text-[rgb(124,106,96)]">
+                      <p className="mt-1.5 font-serif text-[16px] font-semibold leading-snug text-[rgb(124,106,96)]">
                         {milestone.title}
                       </p>
 
                       {!isOpen ? (
-                        <p className="mt-1.5 font-serif text-[13px] font-light leading-relaxed text-[rgb(145,128,119)]">
+                        <p className="mt-1.5 font-serif text-[14px] font-light leading-relaxed text-[rgb(145,128,119)]">
                           {milestone.teaser}
                         </p>
                       ) : null}
 
-                      <span className="mt-2 inline-block font-serif text-[11px] font-light italic text-[rgba(124,106,96,0.75)] underline underline-offset-4">
+                      <span className="mt-2 inline-block font-serif text-[12px] font-light italic text-[rgba(124,106,96,0.75)] underline underline-offset-4">
                         {isOpen ? "Thu gọn" : "Đọc tiếp"}
                       </span>
                     </button>
@@ -107,7 +107,7 @@ export function StorySection() {
                           {milestone.full.map((paragraph) => (
                             <p
                               key={paragraph}
-                              className="mb-3 font-serif text-[13.5px] font-light leading-[1.85] text-[rgb(124,106,96)] last:mb-0 md:text-[14px]"
+                              className="mb-3 font-serif text-[14.5px] font-light leading-[1.85] text-[rgb(124,106,96)] last:mb-0 md:text-[15px]"
                             >
                               {paragraph}
                             </p>
@@ -126,7 +126,7 @@ export function StorySection() {
             {storyOutro.map((paragraph) => (
               <p
                 key={paragraph}
-                className="mb-3 font-serif text-[13.5px] font-light leading-[1.85] text-[rgb(124,106,96)] last:mb-0 md:text-[14px]"
+                className="mb-3 font-serif text-[14.5px] font-light leading-[1.85] text-[rgb(124,106,96)] last:mb-0 md:text-[15px]"
               >
                 {paragraph}
               </p>

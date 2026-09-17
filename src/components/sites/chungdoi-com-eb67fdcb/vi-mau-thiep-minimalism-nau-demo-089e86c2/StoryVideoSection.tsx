@@ -79,7 +79,7 @@ export function StoryVideoSection() {
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </span>
-              <span className="font-serif text-[13px] font-light text-white drop-shadow">
+              <span className="font-serif text-[14px] font-light text-white drop-shadow">
                 Xem câu chuyện của chúng mình
               </span>
             </button>

@@ -11,14 +11,14 @@ export function LoveQuotesSection() {
       />
 
       <div className="relative z-10 mx-auto flex max-w-[460px] flex-col items-center gap-7 text-center">
-        <span className="font-serif text-[14px] text-[rgb(145,128,119)]">
+        <span className="font-serif text-[15px] text-[rgb(145,128,119)]">
           ❦
         </span>
 
         {loveQuotes.map((quote) => (
           <p
             key={quote}
-            className="font-serif text-[15px] font-light italic leading-[1.9] text-[rgb(124,106,96)] md:text-[16px]"
+            className="font-serif text-[16px] font-light italic leading-[1.9] text-[rgb(124,106,96)] md:text-[17px]"
           >
             “{quote}”
           </p>
