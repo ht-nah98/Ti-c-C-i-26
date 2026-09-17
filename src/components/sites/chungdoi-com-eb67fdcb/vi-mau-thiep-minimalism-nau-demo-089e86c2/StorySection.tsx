@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { asset, story } from "./data";
+import { asset, story, storyIntro, storyOutro } from "./data";
 
 /**
- * Câu chuyện của chúng tôi — timeline dọc 4 cột mốc.
+ * Câu chuyện của chúng mình — lời mở đầu, timeline dọc 4 cột mốc, lời kết.
  * Mỗi mốc hiện câu dẫn kèm dấu "…"; bấm vào để mở toàn văn.
  */
 export function StorySection() {
@@ -30,11 +30,23 @@ export function StorySection() {
         <div className="relative z-10 flex flex-col gap-6">
           <div className="text-center">
             <h2 className="font-serif text-[20px] font-bold uppercase tracking-[0.48px] text-[rgb(124,106,96)]">
-              Câu Chuyện Của Chúng Tôi
+              Câu Chuyện Của Chúng Mình
             </h2>
             <p className="mt-2 font-serif text-[12px] font-light italic text-[rgb(145,128,119)]">
               Bấm vào từng mốc thời gian để đọc tiếp
             </p>
+          </div>
+
+          {/* Lời mở đầu */}
+          <div>
+            {storyIntro.map((paragraph) => (
+              <p
+                key={paragraph}
+                className="mb-3 font-serif text-[13.5px] font-light leading-[1.85] text-[rgb(124,106,96)] last:mb-0 md:text-[14px]"
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
 
           <div className="relative w-full pl-7">
@@ -107,6 +119,18 @@ export function StorySection() {
                 );
               })}
             </ol>
+          </div>
+
+          {/* Lời kết */}
+          <div className="border-t border-[rgba(124,106,96,0.2)] pt-6">
+            {storyOutro.map((paragraph) => (
+              <p
+                key={paragraph}
+                className="mb-3 font-serif text-[13.5px] font-light leading-[1.85] text-[rgb(124,106,96)] last:mb-0 md:text-[14px]"
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
         </div>
       </div>

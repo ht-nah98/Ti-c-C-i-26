@@ -148,55 +148,70 @@ export const dressCode = {
   ],
 } as const;
 
-/** Câu chuyện của chúng tôi — 4 cột mốc, bấm để đọc đầy đủ */
+/** Lời mở đầu phần câu chuyện */
+export const storyIntro = [
+  "Có lẽ câu chuyện của chúng mình không bắt đầu bằng một khoảnh khắc “yêu từ cái nhìn đầu tiên”, cũng chẳng có một cuộc gặp gỡ tình cờ như trong phim.",
+  "Chúng mình bắt đầu từ những điều rất bình thường — một công việc chung, những cuộc trao đổi, những buổi họp… và rồi từ lúc nào chẳng hay, hai người vốn chỉ là đồng nghiệp lại dần trở thành một phần quan trọng trong cuộc sống của nhau.",
+] as const;
+
+/** Câu chuyện của chúng mình — 4 cột mốc, bấm để đọc đầy đủ */
 export const story: StoryMilestone[] = [
   {
     date: "Tháng 11 / 2024",
-    title: "Nơi chúng mình bắt đầu biết về nhau",
+    title: "Khi chúng mình bắt đầu biết về nhau",
     teaser:
-      "Một lớp học về AI, một người đứng trên bục giảng và một người ngồi dưới vừa học vừa chấm điểm…",
+      "Cùng một công ty, nhưng phải đến dự án AI 101, hai đứa mới thật sự có cơ hội làm quen…",
     full: [
-      "Chúng mình gặp nhau ở AI 101 — một dự án mà cả hai đều tham gia, nhưng ở hai vai trò rất khác nhau.",
-      "Tiến Anh là speaker, người đứng lớp chia sẻ kiến thức. Phương Linh vừa là học viên ngồi dưới nghe, lại vừa là giám khảo chấm điểm phần trình bày.",
-      "Thật lòng mà nói, lúc ấy chẳng ai nghĩ xa xôi gì. Chỉ là hai người làm chung một dự án, trao đổi với nhau những câu chuyện về công việc, về bài giảng, về deadline. Nhưng hóa ra, những điều lớn lao trong đời thường bắt đầu từ những nơi bình thường nhất như thế.",
+      "Chúng mình đã biết nhau từ năm 2024 vì cùng làm chung một công ty. Nhưng phải đến dự án AI 101 — chương trình chia sẻ và phổ cập kiến thức AI dành cho nhân viên trong công ty — hai đứa mới thật sự có cơ hội làm quen và nói chuyện nhiều hơn.",
+      "Khi ấy, mình là speaker của chương trình, còn Phương Linh vừa là học viên, vừa tham gia với vai trò giám khảo của dự án. Và thật tình cờ, đội ngũ của Phương Linh cũng là đội đầu tiên mình trực tiếp đứng lớp.",
+      "Từ những buổi trao đổi về nội dung đào tạo, những lần cùng nhau xây dựng kế hoạch, chỉnh sửa sản phẩm và thảo luận làm sao để chương trình học đạt hiệu quả tốt nhất, chúng mình bắt đầu có thêm thật nhiều lý do để trò chuyện.",
+      "Ban đầu, mọi thứ đều mang tên “công việc”. Nhưng có lẽ, đâu đó giữa những cuộc họp, những tin nhắn và những lần cùng nhau giải quyết vấn đề, đã có một điều gì đó âm thầm bắt đầu.",
     ],
   },
   {
     date: "01 / 01 / 2025",
-    title: "Tin nhắn đầu tiên không vì công việc",
+    title: "Tin nhắn đầu tiên không còn vì công việc",
     teaser:
-      "Một lời chúc năm mới gửi đi lúc giao thừa — và mọi thứ bắt đầu khác đi từ đó…",
+      "Chỉ là một lời chúc năm mới, và thêm một câu nhắc cô ấy đi ngủ sớm…",
     full: [
-      "Ngày đầu tiên của năm mới, giữa hàng trăm lời chúc qua lại, có một tin nhắn Messenger được gửi đi mà không hề liên quan đến công việc.",
-      "Đó là lần đầu tiên chúng mình nhắn cho nhau chỉ vì muốn nhắn, không phải vì dự án hay bài giảng nào cả.",
-      "Một lời chúc năm mới tưởng như bình thường, nhưng lại là cánh cửa mở ra tất cả những gì đến sau này. Từ hôm đó, những cuộc trò chuyện không còn dừng ở chuyện công việc nữa.",
+      "Ngày đầu tiên của năm 2025 cũng là ngày xuất hiện một cột mốc rất nhỏ, nhưng sau này khi nhìn lại, mình lại thấy nó thật đặc biệt.",
+      "Đó là lần đầu tiên mình nhắn tin cho Phương Linh qua Messenger mà… không cần lấy lý do công việc. Chỉ là một lời chúc năm mới. Và thêm một câu nhắc cô ấy đi ngủ sớm.",
+      "Nghe thì chẳng có gì to tát, nhưng với một người trước đó mỗi lần muốn nhắn tin đều phải nghĩ ra một lý do liên quan đến công việc, thì đó đã là một bước tiến rất lớn rồi. Có lẽ hôm ấy nhờ một chút men rượu ngày đầu năm, mình đã mạnh dạn hơn bình thường một chút.",
+      "Và cũng từ những tin nhắn tưởng chừng rất đơn giản ấy, khoảng cách giữa hai đứa bắt đầu ngắn lại.",
     ],
   },
   {
     date: "08 / 02 / 2025",
-    title: "Ngày chính thức thuộc về nhau",
+    title: "Ngày chúng mình chính thức thuộc về nhau",
     teaser:
-      "Một buổi hẹn kéo dài từ sáng đến tối, và một câu hỏi cuối cùng cũng được nói ra…",
+      "Một buổi hẹn kéo dài từ sáng cho tới tối, và điều mình vẫn luôn giữ trong lòng…",
     full: [
-      "Hôm ấy là một buổi hẹn kéo dài từ sáng đến tận tối muộn — kiểu buổi hẹn mà cả hai đều không muốn nó kết thúc.",
-      "Đi hết chỗ này đến chỗ khác, nói hết chuyện này sang chuyện khác, và thời gian cứ thế trôi qua lúc nào không hay.",
-      "Rồi đến cuối ngày, lời tỏ tình được nói ra. Và câu trả lời là một cái gật đầu.",
-      "Từ ngày 08/02/2025, chúng mình chính thức thuộc về nhau.",
+      "Sau một khoảng thời gian trò chuyện và tìm hiểu, ngày 08/02/2025, chúng mình có một buổi hẹn kéo dài từ sáng cho tới tối. Một ngày có rất nhiều câu chuyện, rất nhiều khoảnh khắc và chắc chắn là rất nhiều hồi hộp với mình.",
+      "Cuối ngày hôm ấy, mình đã nói ra điều mà trước đó vẫn luôn giữ trong lòng. Mình tỏ tình với cô ấy. Và may mắn nhất là… Phương Linh đã đồng ý.",
+      "Có những khoảnh khắc chỉ diễn ra trong vài giây nhưng lại đủ để mình nhớ trong rất nhiều năm. Với mình, giây phút cô ấy gật đầu ngày hôm đó chính là một trong những khoảnh khắc hạnh phúc nhất của tuổi trẻ.",
+      "Kể từ ngày ấy, “mình” và “cô ấy” chính thức trở thành “chúng mình”.",
     ],
   },
   {
     date: "30 / 04 / 2026",
-    title: "Lời cầu hôn bên Tây Hồ",
+    title: "Một chuyến đi, một lời hứa và một cái gật đầu nữa",
     teaser:
-      "Chuyến đi nước ngoài đầu tiên của chúng mình, và một chiếc nhẫn được lấy ra bên hồ…",
+      "Chuyến đi đầu tiên ra khỏi Việt Nam, và một điều đặc biệt hơn cả chuyến đi…",
     full: [
-      "Tây Hồ, Hàng Châu — Trung Quốc. Chuyến du lịch nước ngoài đầu tiên của chúng mình, cùng nhau.",
-      "Giữa khung cảnh mà người ta vẫn bảo là đẹp nhất Giang Nam, bên mặt hồ phẳng lặng, lời cầu hôn được nói ra.",
-      "Không có sân khấu, không có đám đông, chỉ có hai người và một câu hỏi đã ấp ủ từ rất lâu.",
-      "Và rồi chúng mình biết rằng, chuyến đi đầu tiên ấy sẽ là chuyến đầu tiên trong rất nhiều chuyến đi của cả một đời.",
+      "Sau hơn một năm yêu nhau, chúng mình cùng thực hiện một trong những mục tiêu đã từng đặt ra khi bắt đầu đồng hành: cùng nhau đi du lịch nước ngoài. Đó là chuyến đi Trung Quốc kéo dài 5 ngày 4 đêm, và cũng là lần đầu tiên hai đứa cùng nhau bước ra khỏi Việt Nam để khám phá một vùng đất mới.",
+      "Chúng mình đã đi cùng nhau qua những con phố xa lạ, ngắm những khung cảnh trước đây chỉ từng thấy qua ảnh, cùng ăn những món chưa từng thử và có thêm rất nhiều kỷ niệm mà chắc chắn sau này sẽ còn nhắc lại rất nhiều lần.",
+      "Và tại Tây Hồ, Hàng Châu, ngày 30/04/2026, mình đã chuẩn bị cho một điều đặc biệt hơn cả chuyến đi. Mình cầu hôn cô ấy.",
+      "Hơn một năm trước, mình từng hồi hộp chờ một cái gật đầu để được trở thành người yêu của Phương Linh. Lần này, mình lại một lần nữa hồi hộp chờ cô ấy gật đầu — cho một lời hứa dài hơn rất nhiều. Và cô ấy lại nói: Đồng ý.",
     ],
   },
 ];
+
+/** Lời kết phần câu chuyện */
+export const storyOutro = [
+  "Từ đồng nghiệp, đến những người bạn có thể nói với nhau mọi chuyện. Từ những tin nhắn lấy lý do công việc, đến lời chúc đầu năm. Từ một buổi hẹn hò, đến những chuyến đi thật xa. Và từ hai cuộc sống riêng biệt, chúng mình quyết định cùng nhau xây dựng một mái nhà.",
+  "Có lẽ tình yêu của chúng mình không bắt đầu bằng điều gì quá lớn lao. Nó chỉ bắt đầu từ rất nhiều điều nhỏ bé, diễn ra đúng người, đúng lúc.",
+  "Và rồi một ngày, chúng mình nhận ra rằng: Người mình muốn cùng đi qua những hành trình tiếp theo của cuộc đời, vẫn luôn là người đang đứng ngay bên cạnh mình.",
+] as const;
 
 /** Hai câu trích dẫn mở đầu phần nội dung */
 export const loveQuotes = [
