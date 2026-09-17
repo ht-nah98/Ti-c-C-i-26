@@ -140,11 +140,11 @@ export const dressCode = {
   title: "TRANG PHỤC",
   subtitle: "Tông màu gợi ý",
   palette: [
-    { name: "Đỏ", hex: "#9B2C2C" },
-    { name: "Be", hex: "#E8D5BC" },
-    { name: "Nâu", hex: "#7C6A60" },
-    { name: "Đen", hex: "#2B2B2B" },
-    { name: "Trắng", hex: "#FFFFFF" },
+    { name: "Hồng", hex: "#E79BA3" },
+    { name: "Tím", hex: "#C4A4D2" },
+    { name: "Xanh biển", hex: "#4FA6D6" },
+    { name: "Vàng", hex: "#F4C63F" },
+    { name: "Be", hex: "#F0B693" },
   ],
 } as const;
 
