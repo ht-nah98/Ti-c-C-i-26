@@ -305,6 +305,7 @@ export const bankAccounts: BankAccount[] = [
     bank: "Techcombank",
     number: "19033598273010",
     holder: "BUI PHUONG LINH",
+    qr: "bride-techcombank.jpg",
   },
 ];
 
