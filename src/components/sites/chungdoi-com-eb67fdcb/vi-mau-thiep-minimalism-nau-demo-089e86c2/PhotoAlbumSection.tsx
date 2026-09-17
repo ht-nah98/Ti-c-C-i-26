@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { asset, albumPhotos } from "./data";
-import { CloseIcon } from "./icons";
+import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from "./icons";
 
 export function PhotoAlbumSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -98,13 +98,13 @@ export function PhotoAlbumSection() {
           <button
             type="button"
             aria-label="Ảnh trước"
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-3xl text-white"
+            className="left-3 absolute top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white shadow-[0_2px_10px_rgba(0,0,0,0.45)] ring-1 ring-white/25 backdrop-blur-sm transition hover:bg-black/70 active:scale-95 md:h-14 md:w-14 md:left-6"
             onClick={(event) => {
               event.stopPropagation();
               showPrev();
             }}
           >
-            ‹
+            <ChevronLeftIcon className="h-7 w-7 md:h-8 md:w-8" />
           </button>
 
           <img
@@ -117,13 +117,13 @@ export function PhotoAlbumSection() {
           <button
             type="button"
             aria-label="Ảnh tiếp theo"
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-3xl text-white"
+            className="right-3 absolute top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white shadow-[0_2px_10px_rgba(0,0,0,0.45)] ring-1 ring-white/25 backdrop-blur-sm transition hover:bg-black/70 active:scale-95 md:h-14 md:w-14 md:right-6"
             onClick={(event) => {
               event.stopPropagation();
               showNext();
             }}
           >
-            ›
+            <ChevronRightIcon className="h-7 w-7 md:h-8 md:w-8" />
           </button>
 
           <span className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/40 px-4 py-1.5 font-serif text-[13px] font-light text-white/90">
