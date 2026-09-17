@@ -134,6 +134,10 @@
    ============================================================ */
 
 @theme inline {
+  /* Thân bài dùng EB Garamond (có subset vietnamese). Không đặt biến này thì
+     `font-serif` rơi về stack mặc định của Tailwind — Georgia thiếu glyph cho
+     các chữ hai dấu (ắ, ầ, ế, ồ...) nên trình duyệt phải tự ghép, ra "ă´". */
+  --font-serif: var(--font-eb-garamond), "Times New Roman", serif;
   --font-cormorant: var(--font-cormorant), "Times New Roman", serif;
   --font-eb-garamond: var(--font-eb-garamond), "Times New Roman", serif;
   --font-lora: var(--font-lora), "Times New Roman", serif;

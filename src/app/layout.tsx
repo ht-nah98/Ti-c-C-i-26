@@ -17,7 +17,8 @@ const cormorant = Cormorant_Garamond({
 const ebGaramond = EB_Garamond({
   variable: "--font-eb-garamond",
   subsets: ["latin", "vietnamese"],
-  weight: ["400", "500", "600"],
+  // 700 cho các nhãn `font-serif font-bold`; thiếu nó trình duyệt bôi đậm giả
+  weight: ["400", "500", "600", "700"],
 });
 
 const lora = Lora({
