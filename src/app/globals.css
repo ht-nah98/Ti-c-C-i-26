@@ -233,3 +233,232 @@
     transform: rotate(360deg);
   }
 }
+
+/* ============================================================
+   Slideshow chiếu tại tiệc cưới (/slideshow)
+   Hiệu ứng chữ, ảnh và chuyển cảnh
+   ============================================================ */
+
+/* Chữ nổi lên từ dưới kèm mờ dần hiện — dùng cho từng dòng, có stagger */
+@keyframes slide-text-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Chữ trôi đi khi slide kết thúc */
+@keyframes slide-text-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Hoà tan chéo giữa hai slide — CHỈ đổi opacity.
+   Không được kèm translate: dịch chuyển cả slide (ảnh + chữ) lúc chuyển
+   cảnh chính là thứ tạo ra cảm giác giật. */
+@keyframes slide-cross-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/**
+ * Slide rời đi trong 2 giây, dịu dần ngay từ đầu.
+ *
+ * Trước đây keyframe này chỉ có `from 1 / to 0` chạy trong 620ms: slide
+ * đứng sáng rõ suốt cả 8 giây rồi đột ngột tắt gấp — đó là cú "giựt" ở
+ * cuối mỗi slide. Thêm các chặng ở giữa để độ mờ giảm chậm lúc đầu rồi
+ * mới nhanh dần, mắt cảm nhận như ánh sáng tắt dần chứ không phải cắt.
+ */
+@keyframes slide-cross-out {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.82;
+  }
+  60% {
+    opacity: 0.45;
+  }
+  85% {
+    opacity: 0.12;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/**
+ * Chữ trôi ra khi slide kết thúc — dâng nhẹ lên và mờ đi.
+ * Chạy trên chính khối chữ nên nó rời đi trước cả lớp nền, tạo cảm giác
+ * nội dung "tan ra" chứ không phải cả màn hình bị tắt cùng lúc.
+ */
+@keyframes content-drift-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+/* ---- Album ảnh: hiệu ứng lật trang sổ ----
+   Trang lật quanh gáy bên trái, đổ bóng dần khi trang dựng lên. */
+@keyframes page-flip-in {
+  from {
+    transform: perspective(2200px) rotateY(-96deg);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  to {
+    transform: perspective(2200px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes page-flip-out {
+  from {
+    transform: perspective(2200px) rotateY(0deg);
+    opacity: 1;
+  }
+  65% {
+    opacity: 1;
+  }
+  to {
+    transform: perspective(2200px) rotateY(88deg);
+    opacity: 0;
+  }
+}
+
+/* Vệt sáng quét ngang mặt trang khi lật — làm trang trông có độ dày */
+@keyframes page-sheen {
+  from {
+    opacity: 0.55;
+    transform: translateX(-120%) skewX(-12deg);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(160%) skewX(-12deg);
+  }
+}
+
+/* Bóng đổ ở gáy sổ, đậm dần rồi nhạt đi theo nhịp lật */
+@keyframes spine-shadow {
+  0% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Ken Burns — ảnh phóng chậm để màn hình luôn "thở" */
+@keyframes ken-burns-in {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.045) translate(-0.7%, -0.6%);
+  }
+}
+
+@keyframes ken-burns-out {
+  from {
+    transform: scale(1.045) translate(0.7%, 0.6%);
+  }
+  to {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+/* Ngày tháng ở slide bìa chương lộ dần từ trái sang phải */
+@keyframes reveal-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Vạch kẻ mảnh giãn ra từ giữa — gạch chân tiêu đề chương */
+@keyframes rule-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Thanh tiến trình chạy hết chiều ngang đúng bằng thời lượng slide */
+@keyframes progress-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Cánh hoa trôi ngang rất chậm phía sau nội dung */
+@keyframes petal-drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.25;
+  }
+  90% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translate(var(--drift-x, 60px), var(--drift-y, 110vh)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Nhịp thở nhẹ cho nút bắt đầu */
+@keyframes soft-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(124, 106, 96, 0.35);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 0 18px rgba(124, 106, 96, 0);
+  }
+}
+
+/* Người dùng bật "giảm chuyển động" thì tắt hết hiệu ứng nặng */
+@media (prefers-reduced-motion: reduce) {
+  [data-slideshow] *,
+  [data-slideshow] *::before,
+  [data-slideshow] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
