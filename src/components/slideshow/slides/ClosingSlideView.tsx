@@ -19,7 +19,7 @@ export function ClosingSlideView({ slide }: { slide: ClosingSlide }) {
 
       <div className="relative z-10 flex max-w-[68vw] flex-col items-center text-center">
         <FadeUp index={0}>
-          <Fleuron className="text-[clamp(20px,2.2vw,84px)]" />
+          <Fleuron className="text-[clamp(20px,3.08vw,118px)]" />
         </FadeUp>
 
         {slide.lines.map((line, i) => (
@@ -27,7 +27,7 @@ export function ClosingSlideView({ slide }: { slide: ClosingSlide }) {
             <p
               className="font-serif italic"
               style={{
-                fontSize: "clamp(20px, 2.5vw, 96px)",
+                fontSize: "clamp(20px,3.5vw,134px)",
                 fontWeight: 300,
                 lineHeight: 1.72,
                 color: "rgb(124,106,96)",

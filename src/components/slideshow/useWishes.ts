@@ -18,8 +18,11 @@ interface ApiWish {
 /**
  * Lời chúc dài hơn ngưỡng này được chiếu riêng một màn thay vì chen ba thẻ
  * cạnh nhau — chữ đủ lớn để đọc từ cuối phòng tiệc.
+ *
+ * Hạ từ 320 xuống 220 sau khi tăng cỡ chữ: ở 38px, một thẻ rộng 499px chỉ
+ * chứa gọn khoảng 220 ký tự, quá số đó là chữ tràn khỏi thẻ.
  */
-export const NGUONG_DAI = 320;
+export const NGUONG_DAI = 220;
 
 /** Lời chúc đính sẵn trong thiệp — luôn có, dùng khi chưa nối được database */
 const FALLBACK: SlideshowWish[] = pinnedWishes.map((w) => ({

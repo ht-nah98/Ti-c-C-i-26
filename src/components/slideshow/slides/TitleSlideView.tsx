@@ -19,7 +19,8 @@ export function TitleSlideView({ slide }: { slide: TitleSlide }) {
               src={photoSrc(slide.photo)}
               seconds={slide.seconds}
               variant={0}
-              objectPosition="center 22%"
+              // Ảnh ngang phủ khung 16:9 gần khít, lấy chính giữa
+              objectPosition="center center"
             />
           </div>
           {/* Lớp phủ tối để chữ trắng nổi trên mọi ảnh */}
@@ -42,7 +43,7 @@ export function TitleSlideView({ slide }: { slide: TitleSlide }) {
               style={{
                 fontFamily: "var(--font-cormorant)",
                 fontWeight: 600,
-                fontSize: "clamp(14px, 1.5vw, 58px)",
+                fontSize: "clamp(14px,2.1vw,81px)",
                 letterSpacing: "0.42em",
                 color: onPhoto ? "rgba(255,255,255,0.88)" : "rgb(130,119,113)",
               }}
@@ -56,7 +57,7 @@ export function TitleSlideView({ slide }: { slide: TitleSlide }) {
           <h1
             style={{
               fontFamily: "var(--font-nautigal)",
-              fontSize: "clamp(56px, 11vw, 422px)",
+              fontSize: "clamp(56px,11.5vw,442px)",
               lineHeight: 1.05,
               color: onPhoto ? "#ffffff" : "rgb(124,106,96)",
               textShadow: onPhoto ? "0 4px 28px rgba(0,0,0,0.45)" : "none",
@@ -78,7 +79,7 @@ export function TitleSlideView({ slide }: { slide: TitleSlide }) {
             <p
               className="font-serif"
               style={{
-                fontSize: "clamp(20px, 2.4vw, 92px)",
+                fontSize: "clamp(20px,3.36vw,129px)",
                 fontWeight: 300,
                 letterSpacing: "0.12em",
                 color: onPhoto ? "rgba(255,255,255,0.94)" : "rgb(124,106,96)",
@@ -92,7 +93,7 @@ export function TitleSlideView({ slide }: { slide: TitleSlide }) {
 
         {!onPhoto ? (
           <FadeUp index={4} className="mt-[2vh]">
-            <Fleuron className="text-[clamp(18px,2vw,77px)]" />
+            <Fleuron className="text-[clamp(18px,2.8vw,108px)]" />
           </FadeUp>
         ) : null}
 
@@ -101,7 +102,7 @@ export function TitleSlideView({ slide }: { slide: TitleSlide }) {
             <p
               className="font-serif italic"
               style={{
-                fontSize: "clamp(15px, 1.7vw, 65px)",
+                fontSize: "clamp(15px,2.38vw,91px)",
                 fontWeight: 300,
                 color: onPhoto
                   ? "rgba(255,255,255,0.82)"

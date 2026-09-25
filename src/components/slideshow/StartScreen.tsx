@@ -32,7 +32,7 @@ export function StartScreen({ onStart }: { onStart: () => void }) {
           <p
             style={{
               fontFamily: "var(--font-nautigal)",
-              fontSize: "clamp(48px, 7vw, 269px)",
+              fontSize: "clamp(48px,7.4vw,284px)",
               lineHeight: 1.1,
               color: "rgb(124,106,96)",
             }}
@@ -49,7 +49,7 @@ export function StartScreen({ onStart }: { onStart: () => void }) {
           <p
             className="font-serif"
             style={{
-              fontSize: "clamp(16px, 1.8vw, 69px)",
+              fontSize: "clamp(16px,2.52vw,97px)",
               fontWeight: 300,
               letterSpacing: "0.14em",
               color: "rgb(145,128,119)",
@@ -65,7 +65,7 @@ export function StartScreen({ onStart }: { onStart: () => void }) {
             onClick={onStart}
             className="rounded-full bg-[rgb(124,106,96)] px-12 py-4 font-serif text-white transition-transform hover:scale-[1.03]"
             style={{
-              fontSize: "clamp(17px, 1.6vw, 61px)",
+              fontSize: "clamp(17px,2.24vw,86px)",
               fontWeight: 600,
               letterSpacing: "0.06em",
               animation: "soft-pulse 2.6s ease-in-out infinite",
@@ -79,7 +79,7 @@ export function StartScreen({ onStart }: { onStart: () => void }) {
           <p
             className="font-serif italic"
             style={{
-              fontSize: "clamp(12px, 1.05vw, 40px)",
+              fontSize: "clamp(12px,1.47vw,56px)",
               fontWeight: 300,
               lineHeight: 1.9,
               color: "rgba(145,128,119,0.9)",

@@ -24,8 +24,17 @@ export function useIsLeaving(): boolean {
 const BASE =
   "/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2";
 
-/** Ảnh cưới bản đầy đủ — slideshow chiếu màn lớn nên luôn dùng bản full */
+/**
+ * Đường dẫn ảnh cho slideshow.
+ *
+ * Tên bắt đầu bằng `hero-` là ảnh dựng lại từ file gốc studio (cao 2160px,
+ * đủ nét cho màn 4K) nằm trong thư mục `slideshow/`. Các tên còn lại dùng
+ * bộ ảnh 1600px sẵn có của thiệp.
+ */
 export function photoSrc(name: string): string {
+  if (name.startsWith("hero-")) {
+    return `${BASE}/images/slideshow/${name}.jpg`;
+  }
   return `${BASE}/images/couple/full/${name}.jpg`;
 }
 

@@ -56,7 +56,7 @@ export function ChapterSlideView({ slide }: { slide: ChapterSlide }) {
           <p
             style={{
               fontFamily: "var(--font-nautigal)",
-              fontSize: "clamp(44px, 6.5vw, 250px)",
+              fontSize: "clamp(44px,7vw,269px)",
               lineHeight: 1.1,
               color: "#ffffff",
               textShadow: "0 3px 22px rgba(0,0,0,0.5)",
@@ -74,7 +74,7 @@ export function ChapterSlideView({ slide }: { slide: ChapterSlide }) {
           <h2
             className="font-serif"
             style={{
-              fontSize: "clamp(24px, 3.2vw, 123px)",
+              fontSize: "clamp(24px,4.48vw,172px)",
               fontWeight: 400,
               lineHeight: 1.35,
               letterSpacing: "0.02em",

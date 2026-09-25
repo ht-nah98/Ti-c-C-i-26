@@ -48,6 +48,11 @@ export interface StorySlide {
   photo: string;
   /** Ảnh nằm bên nào của màn hình */
   side: "left" | "right";
+  /**
+   * Trọng tâm ảnh trong khung, ví dụ "center 20%". Bỏ trống thì dùng mặc
+   * định hợp với ảnh chân dung dọc; ảnh ngang thường cần "center center".
+   */
+  focus?: string;
 }
 
 /**

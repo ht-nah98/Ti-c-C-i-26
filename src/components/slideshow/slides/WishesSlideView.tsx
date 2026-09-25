@@ -6,6 +6,28 @@ import type { SlideshowWish, WishPool } from "../useWishes";
 import { FadeUp, Fleuron, GrowRule, themeSrc } from "./SlideParts";
 
 /**
+ * Bề rộng tối đa một thẻ, theo số lời chúc trên màn.
+ *
+ * Càng ít cột thì thẻ càng rộng và chữ càng to — trên màn LED nhìn từ cuối
+ * phòng tiệc, hai cột đọc dễ hơn hẳn ba cột.
+ */
+const BE_RONG_THE: Record<number, number> = { 1: 58, 2: 42, 3: 30 };
+
+/** Cỡ chữ lời chúc, to dần khi số cột giảm */
+const CO_CHU_THE: Record<number, string> = {
+  1: "clamp(18px,3.1vw,119px)",
+  2: "clamp(16px,2.5vw,96px)",
+  3: "clamp(14px,1.99vw,76px)",
+};
+
+/** Cỡ chữ tên người gửi, đi kèm cỡ chữ lời chúc */
+const CO_CHU_TEN: Record<number, string> = {
+  1: "clamp(15px,2.3vw,88px)",
+  2: "clamp(14px,1.9vw,73px)",
+  3: "clamp(13px,1.75vw,67px)",
+};
+
+/**
  * Slide lời chúc — lấy từ chính database mà thiệp dùng, nên mọi lời chúc
  * khách đã gửi trên thiệp đều được chiếu lên đây.
  *
@@ -45,16 +67,20 @@ export function WishesSlideView({
       {slide.layout === "feature" ? (
         <FeatureWish wish={picked[0]} />
       ) : (
-        <div className="mt-[4vh] flex w-full max-w-[86vw] items-stretch justify-center gap-[2vw]">
+        <div className="mt-[4vh] flex w-full max-w-[92vw] items-stretch justify-center gap-[2.5vw]">
           {picked.map((wish, i) => (
             <FadeUp
               key={`${wish.name}-${i}`}
               index={3 + i}
               duration={1.15}
               className="flex-1"
-              style={{ maxWidth: "30vw" }}
+              style={{ maxWidth: `${BE_RONG_THE[picked.length] ?? 42}vw` }}
             >
-              <WishCard wish={wish} tilt={(i - 1) * 0.9} />
+              <WishCard
+                wish={wish}
+                tilt={(i - (picked.length - 1) / 2) * 0.9}
+                soCot={picked.length}
+              />
             </FadeUp>
           ))}
         </div>
@@ -82,8 +108,8 @@ function FeatureWish({ wish }: { wish: SlideshowWish }) {
           className="text-center font-serif italic"
           style={{
             fontSize: ratDai
-              ? "clamp(15px, 1.55vw, 60px)"
-              : "clamp(17px, 1.85vw, 71px)",
+              ? "clamp(15px,2.17vw,83px)"
+              : "clamp(17px,2.59vw,99px)",
             fontWeight: 300,
             lineHeight: 1.8,
             color: "rgb(107,91,82)",
@@ -97,7 +123,7 @@ function FeatureWish({ wish }: { wish: SlideshowWish }) {
           <figcaption
             className="mt-[3vh] text-center font-serif"
             style={{
-              fontSize: "clamp(14px, 1.4vw, 54px)",
+              fontSize: "clamp(14px,1.96vw,75px)",
               fontWeight: 600,
               color: "rgb(145,128,119)",
             }}
@@ -111,7 +137,15 @@ function FeatureWish({ wish }: { wish: SlideshowWish }) {
 }
 
 /** Thẻ giấy chứa một lời chúc ngắn */
-function WishCard({ wish, tilt }: { wish: SlideshowWish; tilt: number }) {
+function WishCard({
+  wish,
+  tilt,
+  soCot,
+}: {
+  wish: SlideshowWish;
+  tilt: number;
+  soCot: number;
+}) {
   return (
     <figure
       className="flex h-full flex-col justify-between rounded-[10px] border px-[2vw] py-[3vh]"
@@ -126,7 +160,7 @@ function WishCard({ wish, tilt }: { wish: SlideshowWish; tilt: number }) {
       <blockquote
         className="font-serif italic"
         style={{
-          fontSize: "clamp(14px, 1.42vw, 55px)",
+          fontSize: CO_CHU_THE[soCot] ?? CO_CHU_THE[3],
           fontWeight: 300,
           lineHeight: 1.72,
           color: "rgb(107,91,82)",
@@ -140,7 +174,7 @@ function WishCard({ wish, tilt }: { wish: SlideshowWish; tilt: number }) {
         <figcaption
           className="mt-[2.4vh] font-serif"
           style={{
-            fontSize: "clamp(13px, 1.25vw, 48px)",
+            fontSize: CO_CHU_TEN[soCot] ?? CO_CHU_TEN[3],
             fontWeight: 600,
             color: "rgb(145,128,119)",
           }}
@@ -174,14 +208,14 @@ function Backdrop({
 
       <div className="relative z-10 flex h-full w-full flex-col items-center justify-center px-[6vw]">
         <FadeUp index={0}>
-          <Fleuron className="text-[clamp(18px,2vw,77px)]" />
+          <Fleuron className="text-[clamp(18px,2.8vw,108px)]" />
         </FadeUp>
 
         <FadeUp index={1} className="mt-[1.6vh]">
           <h2
             className="text-center font-serif uppercase"
             style={{
-              fontSize: "clamp(18px, 2.1vw, 81px)",
+              fontSize: "clamp(18px,2.94vw,113px)",
               fontWeight: 700,
               letterSpacing: "0.16em",
               color: "rgb(124,106,96)",

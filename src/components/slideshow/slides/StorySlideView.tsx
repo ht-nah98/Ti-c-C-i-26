@@ -18,7 +18,12 @@ export function StorySlideView({
   index: number;
 }) {
   const photoLeft = slide.side === "left";
-  const isLong = slide.text.length > 260;
+  /**
+   * Cỡ chữ đã tăng để đọc được từ cuối phòng tiệc, nên ngưỡng chuyển sang
+   * cỡ nhỏ phải hạ xuống theo: ở 58px, đoạn quá 230 ký tự bắt đầu chạm đáy
+   * khung. Đoạn dài nhất trong truyện là 290 ký tự.
+   */
+  const isLong = slide.text.length > 230;
 
   return (
     <div
@@ -56,7 +61,7 @@ export function StorySlideView({
             src={photoSrc(slide.photo)}
             seconds={slide.seconds}
             variant={index}
-            objectPosition="center 35%"
+            objectPosition={slide.focus ?? "center 35%"}
           />
           {/* Chuyển sắc mềm ở mép giáp chữ, tránh đường cắt cứng */}
           <div
@@ -81,7 +86,7 @@ export function StorySlideView({
                   style={{
                     fontFamily: "var(--font-cormorant)",
                     fontWeight: 600,
-                    fontSize: "clamp(12px, 1.15vw, 44px)",
+                    fontSize: "clamp(12px,1.61vw,62px)",
                     letterSpacing: "0.34em",
                     color: "rgb(160,145,136)",
                   }}
@@ -106,8 +111,8 @@ export function StorySlideView({
                 className="font-serif"
                 style={{
                   fontSize: isLong
-                    ? "clamp(17px, 1.92vw, 74px)"
-                    : "clamp(19px, 2.16vw, 83px)",
+                    ? "clamp(17px,2.69vw,103px)"
+                    : "clamp(19px,3.02vw,116px)",
                   fontWeight: 300,
                   lineHeight: 1.78,
                   color: "rgb(107,91,82)",

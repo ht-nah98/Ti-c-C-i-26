@@ -24,17 +24,17 @@ import type { Slide } from "./types";
  * để ảnh không lặp lại ngay cạnh nhau và ảnh đẹp rơi vào đoạn quan trọng.
  */
 const CHAPTER_PHOTOS: string[][] = [
-  ["DSC01416", "DSC01438", "DSC01454", "DSC01550"],
-  ["DSC01609", "DSC01615", "DSC01628", "DSC01711"],
-  ["DSC01735", "DSC01779", "DSC01801", "DSC01839"],
-  ["DSC02208", "DSC02246", "DSC02354", "DSC02417"],
+  ["hero-DSC01416", "hero-DSC01438", "hero-DSC01454", "hero-DSC01550"],
+  ["hero-DSC01609", "hero-DSC01615", "hero-DSC01628", "hero-DSC01711"],
+  ["hero-DSC01735", "hero-DSC01779", "hero-DSC01801", "hero-DSC01839"],
+  ["hero-DSC02208", "hero-DSC02246", "hero-DSC02354", "hero-DSC02417"],
 ];
 
 /** Ảnh cho slide bìa mỗi chương */
-const CHAPTER_COVER_PHOTOS = ["DSC01379", "DSC01738", "DSC01861", "DSC02320"];
+const CHAPTER_COVER_PHOTOS = ["hero-DSC01379", "hero-DSC01738", "hero-DSC01861", "hero-DSC02320"];
 
 /** Ảnh cho hai đoạn lời mở đầu */
-const INTRO_PHOTOS = ["DSC02011", "DSC02012"];
+const INTRO_PHOTOS = ["hero-DSC02011", "hero-DSC02034"];
 
 /** Rút gọn tiêu đề chương thành nhãn ngắn hiện ở góc slide chữ */
 function chapterLabel(index: number): string {
@@ -49,7 +49,8 @@ const openingSlides: Slide[] = [
     eyebrow: "THE WEDDING OF",
     names: `${couple.groom.short} & ${couple.bride.short}`,
     subtitle: weddingDate.pretty,
-    photo: "DSC01801",
+    // Ảnh ngang, hai người ở giữa — hợp khung 16:9 của màn chiếu
+    photo: "hero-DSC02752",
   },
   {
     kind: "quote",
@@ -107,26 +108,34 @@ const outroSlides: Slide[] = storyOutro.map((text, i) => {
     kind: "story" as const,
     seconds: 6,
     text,
-    photo: i === 0 ? "DSC02435" : "DSC02524",
+    photo: i === 0 ? "hero-DSC02435" : "hero-DSC02524",
     side: i % 2 === 0 ? ("left" as const) : ("right" as const),
+    // DSC02752 là ảnh ngang: lấy chính giữa để trọn hai người và hàng nến,
+    // mặc định 35% dành cho ảnh chân dung dọc sẽ cắt mất phần dưới
+    focus: i === 1 ? "center center" : undefined,
   };
 });
 
 /**
- * Lời chúc khách gửi — 5 màn, chiếu được tới 14 lời chúc mỗi vòng.
+ * Lời chúc khách gửi — 7 màn, chiếu được tới 12 lời chúc mỗi vòng.
  *
- * 4 màn thẻ (3 lời chúc ngắn mỗi màn) xen 2 màn riêng cho lời chúc dài.
- * Các `offset` lệch nhau nên không màn nào hiện trùng lời chúc của màn khác.
+ * Hai lời chúc một màn thay vì ba: thẻ rộng gần gấp rưỡi nên chữ to hơn
+ * hẳn, đọc được từ cuối phòng tiệc. Xen kẽ vài màn một lời chúc đứng giữa
+ * cho chữ lớn nhất, và hai màn riêng cho lời chúc dài.
+ *
+ * Các `offset` lệch nhau nên không màn nào hiện trùng lời chúc màn khác.
  */
 const WISH_HEADING = "Lời chúc từ những người thương";
 
 const wishesSlides: Slide[] = [
-  { kind: "wishes", seconds: 7, heading: WISH_HEADING, layout: "cards", offset: 0, count: 3 },
+  { kind: "wishes", seconds: 7, heading: WISH_HEADING, layout: "cards", offset: 0, count: 2 },
+  { kind: "wishes", seconds: 7, heading: WISH_HEADING, layout: "cards", offset: 2, count: 1 },
   { kind: "wishes", seconds: 8, heading: WISH_HEADING, layout: "feature", offset: 0, count: 1 },
-  { kind: "wishes", seconds: 7, heading: WISH_HEADING, layout: "cards", offset: 3, count: 3 },
+  { kind: "wishes", seconds: 7, heading: WISH_HEADING, layout: "cards", offset: 3, count: 2 },
+  { kind: "wishes", seconds: 7, heading: WISH_HEADING, layout: "cards", offset: 5, count: 1 },
   { kind: "wishes", seconds: 8, heading: WISH_HEADING, layout: "feature", offset: 1, count: 1 },
-  { kind: "wishes", seconds: 7, heading: WISH_HEADING, layout: "cards", offset: 6, count: 3 },
-  { kind: "wishes", seconds: 7, heading: WISH_HEADING, layout: "cards", offset: 9, count: 3 },
+  { kind: "wishes", seconds: 7, heading: WISH_HEADING, layout: "cards", offset: 6, count: 2 },
+  { kind: "wishes", seconds: 7, heading: WISH_HEADING, layout: "cards", offset: 8, count: 2 },
 ];
 
 /** Lời cảm ơn và slide kết */
