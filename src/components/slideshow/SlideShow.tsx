@@ -7,9 +7,7 @@ import { SlideRenderer } from "./SlideRenderer";
 import { AmbientPetalLayer } from "./AmbientPetalLayer";
 import { StartScreen } from "./StartScreen";
 import { LeavingProvider, photoSrc } from "./slides/SlideParts";
-
-const TRACK =
-  "/sites/chungdoi-com-eb67fdcb/vi-mau-thiep-minimalism-nau-demo-089e86c2/audio/ngay-dau-tien.mp3";
+import { useYouTubeAudio } from "@/components/shared/YouTubeAudio";
 
 /**
  * Chuyển cảnh chia làm hai pha NỐI TIẾP nhau, không chồng lấn:
@@ -47,7 +45,15 @@ export function SlideShow() {
   /** Tăng mỗi lần chuyển slide để ép React dựng lại DOM, animation chạy từ đầu */
   const [cycle, setCycle] = useState(0);
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  /**
+   * Nhạc nền phát qua trình phát YouTube nhúng thay vì file trong repo:
+   * lượt nghe vẫn tính cho kênh gốc và tác giả vẫn nhận doanh thu.
+   */
+  const {
+    element: khungNhac,
+    playing: dangPhatNhac,
+    toggle: bapTatNhac,
+  } = useYouTubeAudio({ autoStart: started, volume: 40 });
   const wishes = useWishes();
 
   const current = slides[index];
@@ -122,17 +128,15 @@ export function SlideShow() {
           }
           break;
         case "m":
-        case "M": {
-          const audio = audioRef.current;
-          if (audio) audio.muted = !audio.muted;
+        case "M":
+          bapTatNhac();
           break;
-        }
       }
     }
 
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [started, index, goTo]);
+  }, [started, index, goTo, bapTatNhac]);
 
   /** Tải trước toàn bộ ảnh để slide không bao giờ hiện ra lúc ảnh chưa kịp về */
   useEffect(() => {
@@ -143,14 +147,9 @@ export function SlideShow() {
   }, []);
 
   function handleStart() {
+    // Trình phát nhạc tự bắt đầu khi `started` thành true — cú bấm này
+    // chính là tương tác mà trình duyệt đòi hỏi để cho phát tiếng
     setStarted(true);
-
-    const audio = audioRef.current;
-    if (audio) {
-      audio.volume = 0.4;
-      void audio.play().catch(() => undefined);
-    }
-
     void document.documentElement.requestFullscreen().catch(() => undefined);
   }
 
@@ -159,7 +158,7 @@ export function SlideShow() {
       data-slideshow
       className="relative h-dvh w-screen overflow-hidden bg-[#fff7f3]"
     >
-      <audio ref={audioRef} src={TRACK} loop preload="auto" />
+      {khungNhac}
 
       {/* Cánh hoa trôi rất mờ phía sau mọi slide */}
       {started ? <AmbientPetalLayer /> : null}
@@ -244,6 +243,15 @@ export function SlideShow() {
                 : `progress-fill ${current.seconds}s linear ${transitioning ? exitMs : 0}ms forwards`,
             }}
           />
+        </div>
+      ) : null}
+
+      {/* Báo nhạc đang tắt — người chiếu biết mà bấm M bật lại */}
+      {started && !dangPhatNhac ? (
+        <div className="absolute bottom-6 left-7 z-30 rounded-full bg-[rgba(124,106,96,0.7)] px-4 py-1.5">
+          <span className="font-serif text-[13px] text-white">
+            Nhạc đang tắt · bấm M để bật
+          </span>
         </div>
       ) : null}
 

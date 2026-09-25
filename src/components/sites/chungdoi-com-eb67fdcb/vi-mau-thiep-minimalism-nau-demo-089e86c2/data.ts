@@ -151,7 +151,7 @@ export const dressCode = {
 /** Lời mở đầu phần câu chuyện */
 export const storyIntro = [
   "Có lẽ câu chuyện của chúng mình không bắt đầu bằng một khoảnh khắc “yêu từ cái nhìn đầu tiên”, cũng chẳng có một cuộc gặp gỡ tình cờ như trong phim.",
-  "Chúng mình bắt đầu từ những điều rất bình thường — một công việc chung, những cuộc trao đổi, những buổi họp… và rồi từ lúc nào chẳng hay, hai người vốn chỉ là đồng nghiệp lại dần trở thành một phần quan trọng trong cuộc sống của nhau.",
+  "Chúng mình bắt đầu từ những điều rất bình thường, một công việc chung, những cuộc trao đổi, những buổi họp… và rồi từ lúc nào chẳng hay, hai người vốn chỉ là đồng nghiệp lại dần trở thành một phần quan trọng trong cuộc sống của nhau.",
 ] as const;
 
 /** Câu chuyện của chúng mình — 4 cột mốc, bấm để đọc đầy đủ */
@@ -162,8 +162,8 @@ export const story: StoryMilestone[] = [
     teaser:
       "Cùng một công ty, nhưng phải đến dự án AI 101, hai đứa mới thật sự có cơ hội làm quen…",
     full: [
-      "Chúng mình đã biết nhau từ năm 2024 vì cùng làm chung một công ty. Nhưng phải đến dự án AI 101 — chương trình chia sẻ và phổ cập kiến thức AI dành cho nhân viên trong công ty — hai đứa mới thật sự có cơ hội làm quen và nói chuyện nhiều hơn.",
-      "Khi ấy, mình là speaker của chương trình, còn Phương Linh vừa là học viên, vừa tham gia với vai trò giám khảo của dự án. Và thật tình cờ, đội ngũ của Phương Linh cũng là đội đầu tiên mình trực tiếp đứng lớp.",
+      "Chúng mình đã biết nhau từ năm 2024 vì cùng làm chung một công ty. Nhưng phải đến dự án AI 101, hai đứa mới thật sự có cơ hội làm quen và nói chuyện nhiều hơn.",
+      "Khi ấy, mình là người đứng lớp của chương trình, còn Phương Linh vừa là học viên, vừa tham gia với vai trò giám khảo của dự án. Và thật tình cờ, đội ngũ của Phương Linh cũng là đội đầu tiên mình trực tiếp đứng lớp.",
       "Từ những buổi trao đổi về nội dung đào tạo, những lần cùng nhau xây dựng kế hoạch, chỉnh sửa sản phẩm và thảo luận làm sao để chương trình học đạt hiệu quả tốt nhất, chúng mình bắt đầu có thêm thật nhiều lý do để trò chuyện.",
       "Ban đầu, mọi thứ đều mang tên “công việc”. Nhưng có lẽ, đâu đó giữa những cuộc họp, những tin nhắn và những lần cùng nhau giải quyết vấn đề, đã có một điều gì đó âm thầm bắt đầu.",
     ],
@@ -174,7 +174,7 @@ export const story: StoryMilestone[] = [
     teaser:
       "Chỉ là một lời chúc năm mới, và thêm một câu nhắc cô ấy đi ngủ sớm…",
     full: [
-      "Ngày đầu tiên của năm 2025 cũng là ngày xuất hiện một cột mốc rất nhỏ, nhưng sau này khi nhìn lại, mình lại thấy nó thật đặc biệt.",
+      "Ngày đầu tiên của năm 2025 cũng là ngày xuất hiện một cột mốc rất nhỏ, nhưng sau này khi nhìn lại, mình thấy nó thật đặc biệt.",
       "Đó là lần đầu tiên mình nhắn tin cho Phương Linh qua Messenger mà… không cần lấy lý do công việc. Chỉ là một lời chúc năm mới. Và thêm một câu nhắc cô ấy đi ngủ sớm.",
       "Nghe thì chẳng có gì to tát, nhưng với một người trước đó mỗi lần muốn nhắn tin đều phải nghĩ ra một lý do liên quan đến công việc, thì đó đã là một bước tiến rất lớn rồi. Có lẽ hôm ấy nhờ một chút men rượu ngày đầu năm, mình đã mạnh dạn hơn bình thường một chút.",
       "Và cũng từ những tin nhắn tưởng chừng rất đơn giản ấy, khoảng cách giữa hai đứa bắt đầu ngắn lại.",
@@ -187,7 +187,7 @@ export const story: StoryMilestone[] = [
       "Một buổi hẹn kéo dài từ sáng cho tới tối, và điều mình vẫn luôn giữ trong lòng…",
     full: [
       "Sau một khoảng thời gian trò chuyện và tìm hiểu, ngày 08/02/2025, chúng mình có một buổi hẹn kéo dài từ sáng cho tới tối. Một ngày có rất nhiều câu chuyện, rất nhiều khoảnh khắc và chắc chắn là rất nhiều hồi hộp với mình.",
-      "Cuối ngày hôm ấy, mình đã nói ra điều mà trước đó vẫn luôn giữ trong lòng. Mình tỏ tình với cô ấy. Và may mắn nhất là… Phương Linh đã đồng ý.",
+      "Cuối ngày hôm ấy, mình đã nói ra điều mà trước đó vẫn luôn giữ trong lòng. Mình ngỏ lời với cô ấy. Và may mắn nhất là… Phương Linh đã đồng ý.",
       "Có những khoảnh khắc chỉ diễn ra trong vài giây nhưng lại đủ để mình nhớ trong rất nhiều năm. Với mình, giây phút cô ấy gật đầu ngày hôm đó chính là một trong những khoảnh khắc hạnh phúc nhất của tuổi trẻ.",
       "Kể từ ngày ấy, “mình” và “cô ấy” chính thức trở thành “chúng mình”.",
     ],
@@ -201,7 +201,7 @@ export const story: StoryMilestone[] = [
       "Sau hơn một năm yêu nhau, chúng mình cùng thực hiện một trong những mục tiêu đã từng đặt ra khi bắt đầu đồng hành: cùng nhau đi du lịch nước ngoài. Đó là chuyến đi Trung Quốc kéo dài 5 ngày 4 đêm, và cũng là lần đầu tiên hai đứa cùng nhau bước ra khỏi Việt Nam để khám phá một vùng đất mới.",
       "Chúng mình đã đi cùng nhau qua những con phố xa lạ, ngắm những khung cảnh trước đây chỉ từng thấy qua ảnh, cùng ăn những món chưa từng thử và có thêm rất nhiều kỷ niệm mà chắc chắn sau này sẽ còn nhắc lại rất nhiều lần.",
       "Và tại Tây Hồ, Hàng Châu, ngày 30/04/2026, mình đã chuẩn bị cho một điều đặc biệt hơn cả chuyến đi. Mình cầu hôn cô ấy.",
-      "Hơn một năm trước, mình từng hồi hộp chờ một cái gật đầu để được trở thành người yêu của Phương Linh. Lần này, mình lại một lần nữa hồi hộp chờ cô ấy gật đầu — cho một lời hứa dài hơn rất nhiều. Và cô ấy lại nói: Đồng ý.",
+      "Hơn một năm trước, mình từng hồi hộp chờ một cái gật đầu để được trở thành người yêu của Phương Linh. Lần này, mình một lần nữa hồi hộp chờ cô ấy gật đầu, cho một lời hứa dài hơn rất nhiều. Mình đã rất hạnh phúc và vỡ òa khi nghe cô ấy nói: Em đồng ý ạ.",
     ],
   },
 ];
@@ -221,7 +221,7 @@ export const loveQuotes = [
 
 /** Lời kết cuối thiệp */
 export const closingWords = [
-  "Một lời chúc, một cái ôm, hay chỉ là có mặt trong ngày hôm đó — với chúng tôi đều là món quà không gì thay được.",
+  "Một lời chúc, một cái ôm, hay chỉ là có mặt trong ngày hôm đó, với chúng tôi đều là món quà không gì thay được.",
   "Cảm ơn vì đã ở đây, trong ngày quan trọng nhất của chúng tôi.",
 ] as const;
 
