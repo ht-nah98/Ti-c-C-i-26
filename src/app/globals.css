@@ -317,61 +317,6 @@
   }
 }
 
-/* ---- Album ảnh: hiệu ứng lật trang sổ ----
-   Trang lật quanh gáy bên trái, đổ bóng dần khi trang dựng lên. */
-@keyframes page-flip-in {
-  from {
-    transform: perspective(2200px) rotateY(-96deg);
-    opacity: 0;
-  }
-  35% {
-    opacity: 1;
-  }
-  to {
-    transform: perspective(2200px) rotateY(0deg);
-    opacity: 1;
-  }
-}
-
-@keyframes page-flip-out {
-  from {
-    transform: perspective(2200px) rotateY(0deg);
-    opacity: 1;
-  }
-  65% {
-    opacity: 1;
-  }
-  to {
-    transform: perspective(2200px) rotateY(88deg);
-    opacity: 0;
-  }
-}
-
-/* Vệt sáng quét ngang mặt trang khi lật — làm trang trông có độ dày */
-@keyframes page-sheen {
-  from {
-    opacity: 0.55;
-    transform: translateX(-120%) skewX(-12deg);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(160%) skewX(-12deg);
-  }
-}
-
-/* Bóng đổ ở gáy sổ, đậm dần rồi nhạt đi theo nhịp lật */
-@keyframes spine-shadow {
-  0% {
-    opacity: 0;
-  }
-  45% {
-    opacity: 0.4;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 /* Ken Burns — ảnh phóng chậm để màn hình luôn "thở" */
 @keyframes ken-burns-in {
   from {

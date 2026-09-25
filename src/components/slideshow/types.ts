@@ -51,22 +51,6 @@ export interface StorySlide {
 }
 
 /**
- * Slide album.
- *
- * `landscape`: một ảnh ngang phủ kín màn.
- * `portrait`: 2-3 ảnh dọc xếp cạnh nhau, mỗi ảnh giữ đúng tỉ lệ 2:3 nên
- * không bị phóng to cắt mất chủ thể.
- */
-export interface PhotoSlide {
-  kind: "photo";
-  seconds: number;
-  photos: string[];
-  orientation: "landscape" | "portrait";
-  /** Dòng chữ mờ đặt chồng lên ảnh, tuỳ chọn */
-  caption?: string;
-}
-
-/**
  * Slide lời chúc.
  *
  * `cards`: 3 thẻ giấy cạnh nhau, dùng cho lời chúc ngắn.
@@ -95,6 +79,5 @@ export type Slide =
   | QuoteSlide
   | ChapterSlide
   | StorySlide
-  | PhotoSlide
   | WishesSlide
   | ClosingSlide;

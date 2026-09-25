@@ -6,7 +6,6 @@ import { TitleSlideView } from "./slides/TitleSlideView";
 import { QuoteSlideView } from "./slides/QuoteSlideView";
 import { ChapterSlideView } from "./slides/ChapterSlideView";
 import { StorySlideView } from "./slides/StorySlideView";
-import { PhotoSlideView } from "./slides/PhotoSlideView";
 import { WishesSlideView } from "./slides/WishesSlideView";
 import { ClosingSlideView } from "./slides/ClosingSlideView";
 
@@ -29,8 +28,6 @@ export function SlideRenderer({
       return <ChapterSlideView slide={slide} />;
     case "story":
       return <StorySlideView slide={slide} index={index} />;
-    case "photo":
-      return <PhotoSlideView slide={slide} index={index} />;
     case "wishes":
       return <WishesSlideView slide={slide} wishes={wishes} />;
     case "closing":

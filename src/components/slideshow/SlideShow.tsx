@@ -25,10 +25,6 @@ const TRACK =
 const EXIT_MS = 2000;
 const ENTER_MS = 1100;
 
-/** Lật trang album: trang cũ lật đi hẳn rồi trang mới mới dựng lên */
-const FLIP_EXIT_MS = 1500;
-const FLIP_ENTER_MS = 1000;
-
 /**
  * Chữ bên trong slide bắt đầu trôi ra sớm hơn lớp nền một nhịp, nên nội
  * dung "tan ra" trước rồi nền mới mờ theo — mềm hơn nhiều so với việc cả
@@ -56,19 +52,10 @@ export function SlideShow() {
 
   const current = slides[index];
 
-  /**
-   * Album ảnh chuyển bằng hiệu ứng lật trang sổ, các slide còn lại hoà tan.
-   * Chỉ lật khi cả hai slide đều là ảnh album — lật vào/ra khỏi một slide
-   * chữ trông rất gượng.
-   */
-  const currentIsAlbum = current.kind === "photo";
-  const leavingIsAlbum = leaving !== null && slides[leaving].kind === "photo";
-  const flipping = currentIsAlbum && leavingIsAlbum;
-
-  const enterAnimation = flipping ? "page-flip-in" : "slide-cross-in";
-  const exitAnimation = flipping ? "page-flip-out" : "slide-cross-out";
-  const exitMs = flipping ? FLIP_EXIT_MS : EXIT_MS;
-  const enterMs = flipping ? FLIP_ENTER_MS : ENTER_MS;
+  const enterAnimation = "slide-cross-in";
+  const exitAnimation = "slide-cross-out";
+  const exitMs = EXIT_MS;
+  const enterMs = ENTER_MS;
   /** Tổng thời gian một lần chuyển cảnh, để trừ vào thời lượng slide */
   const transitionMs = exitMs + enterMs;
   /** Có đang trong lúc chuyển cảnh hay không — dùng để bật/tắt `will-change` */
@@ -195,7 +182,6 @@ export function SlideShow() {
             // `ease-in-out` cho độ mờ giảm chậm ở hai đầu — không có điểm
             // nào chuyển động đột ngột để mắt bắt được
             animation: `${exitAnimation} ${exitMs}ms ease-in-out forwards`,
-            transformOrigin: leavingIsAlbum ? "left center" : "center",
           }}
         >
           {/* Khối nội dung trôi ra sớm hơn lớp nền, nên chữ tan trước */}
@@ -237,7 +223,6 @@ export function SlideShow() {
              * `opacity: 0` ở trên giữ lớp này vô hình suốt thời gian chờ.
              */
             animation: `${enterAnimation} ${enterMs}ms cubic-bezier(0.4, 0, 0.2, 1) ${transitioning ? exitMs : 0}ms forwards`,
-            transformOrigin: currentIsAlbum ? "left center" : "center",
           }}
         >
           <SlideRenderer slide={current} index={index} wishes={wishes} />

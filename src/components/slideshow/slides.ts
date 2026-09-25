@@ -8,7 +8,6 @@
  * khách nên vòng lặp này đủ để ai vào lúc nào cũng xem trọn câu chuyện.
  */
 import {
-  albumPhotos,
   closingWords,
   couple,
   loveQuotes,
@@ -36,31 +35,6 @@ const CHAPTER_COVER_PHOTOS = ["DSC01379", "DSC01738", "DSC01861", "DSC02320"];
 
 /** Ảnh cho hai đoạn lời mở đầu */
 const INTRO_PHOTOS = ["DSC02011", "DSC02012"];
-
-/**
- * Album cuối — cuốn sổ ảnh lật qua từng trang.
- *
- * Bộ ảnh gần như toàn ảnh dọc 2:3, nên trang ảnh dọc xếp 3 tấm cạnh nhau
- * (mỗi tấm một khung đúng tỉ lệ, không cắt xén) và trang ảnh ngang thì
- * một tấm phủ kín màn. Xen kẽ hai kiểu để nhịp lật không đơn điệu.
- */
-interface AlbumPage {
-  photos: string[];
-  orientation: "landscape" | "portrait";
-}
-
-const ALBUM_LAYOUT: AlbumPage[] = [
-  { photos: ["DSC01615", "DSC01779", "DSC02208"], orientation: "portrait" },
-  { photos: ["DSC02570"], orientation: "landscape" },
-  { photos: ["DSC02354", "DSC02559", "DSC02023"], orientation: "portrait" },
-  { photos: ["DSC02752"], orientation: "landscape" },
-  { photos: ["DSC02034", "DSC02065", "DSC02187"], orientation: "portrait" },
-  { photos: ["DSC02524"], orientation: "landscape" },
-  { photos: ["DSC02246", "DSC02266", "DSC02320"], orientation: "portrait" },
-  { photos: ["DSC02011"], orientation: "landscape" },
-  { photos: ["DSC02417", "DSC02435", "DSC02612"], orientation: "portrait" },
-  { photos: ["DSC02661", "DSC01861", "DSC01839"], orientation: "portrait" },
-];
 
 /** Rút gọn tiêu đề chương thành nhãn ngắn hiện ở góc slide chữ */
 function chapterLabel(index: number): string {
@@ -138,16 +112,6 @@ const outroSlides: Slide[] = storyOutro.map((text, i) => {
   };
 });
 
-/** Album ảnh cưới — chạy sau câu chuyện, theo đúng ý gia đình */
-const albumSlides: Slide[] = ALBUM_LAYOUT.map((page, i) => ({
-  kind: "photo",
-  // Trang 3 ảnh cần lâu hơn một nhịp để mắt kịp đi hết cả ba tấm
-  seconds: page.orientation === "portrait" ? 5 : 4,
-  photos: page.photos,
-  orientation: page.orientation,
-  caption: i === 0 ? "Album ảnh cưới" : undefined,
-}));
-
 /**
  * Lời chúc khách gửi — 5 màn, chiếu được tới 14 lời chúc mỗi vòng.
  *
@@ -189,8 +153,6 @@ export const slides: Slide[] = [
   // Lời chúc đi ngay sau câu chuyện — khách vừa nghe xong chuyện tình thì
   // đọc lời chúc của bạn bè, mạch cảm xúc nối liền nhau
   ...wishesSlides,
-  // Album khép lại bằng hình ảnh, trước khi tới lời cảm ơn
-  ...albumSlides,
   ...closingSlides,
 ];
 
@@ -198,13 +160,9 @@ export const slides: Slide[] = [
 export const usedPhotos: string[] = Array.from(
   new Set(
     slides.flatMap((s) => {
-      if (s.kind === "photo") return s.photos;
       if (s.kind === "story") return [s.photo];
       if ((s.kind === "title" || s.kind === "chapter") && s.photo) return [s.photo];
       return [];
     }),
   ),
 );
-
-/** Ảnh dự phòng nếu cần thêm — các ảnh chưa dùng trong kịch bản trên */
-export const unusedPhotos = albumPhotos.filter((p) => !usedPhotos.includes(p));
